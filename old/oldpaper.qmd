@@ -1,0 +1,99 @@
+# Events method
+
+As something of a preliminary step, we want to check that there is a relationship between adverse life events and young people's self-perceived impact of the pandemic. To do so, we use three logistic regression models to explore the extent to which life events explain self-perceived negative impact of the pandemic on mental wellbeing.
+
+Our first model explores the predictive power of the adverse life events index we constructed, as follows:
+
+$logit(PandemicImpactPercep_{i}) = \beta_0 + \beta_{1} AdverseEventIndex_{i} + \varepsilon_{i}$
+
+where $PandemicImpactPercep$ is a binary variable indicating that person $i$ reports that the pandemic is continuing to have a negative impact on their life, $AdverseEventIndex$ is person $i$’s value of the adverse life events index, and $\varepsilon$ is the error term.
+
+Our second model is the same except it uses our tertile groups of the life events index measure, as follows:
+
+$logit(PandemicImpactPercep_{i}) = \beta_0 + \beta'_{1} TAdverseEventIndex_{i} + \varepsilon_{it}$
+
+where variables are as defined above, except that $TAdverseEventIndex$ is a vector of binary variables indicating person $i$’s location in the distribution of the adverse life event index (high and medium, leaving low as a baseline).
+
+Our third model is the same as the previous two except it includes a set of binary variables for the individual adverse life events, as listed in @sec-data, in place of the adverse life events index.
+```{r}
+#| label: regression-lifeevents
+#| output: false
+regressiondata <- merged |> restrict_sample() |> create_survey_design() |>
+                         standardise_ses_poly() |> standardise_psych() |> standardise_event_index_poly() |> create_qses_groups() |> create_qevent_groups()
+
+ev_m1 <- svyglm(covid_impact_mh_neg ~ event_index_poly,
+                         regressiondata, family=quasibinomial(link = "logit")
+                         )
+ev_m1_pred <- predict(ev_m1, newdata = regressiondata, type = "response")
+ev_m1_tests <- table(ifelse(ev_m1_pred > 0.4, 1, 0), regressiondata$variables$covid_impact_mh_neg) |>
+                epi.tests()
+ev_m1_ppv <- ev_m1_tests$detail |> filter(statistic == "diag.ac") |> select(est) |> round(digits = 2) |> as.numeric()
+ev_m1_nr2 <- psrsq(ev_m1)
+
+ev_m2 <- svyglm(covid_impact_mh_neg ~ qevent_index_poly,
+                         regressiondata, family=quasibinomial(link = "logit")
+                         )
+ev_m2_pred <- predict(ev_m2, newdata = regressiondata, type = "response")
+ev_m2_tests <- table(ifelse(ev_m2_pred > 0.4, 1, 0), regressiondata$variables$covid_impact_mh_neg) |>
+                epi.tests()
+ev_m2_ppv <- ev_m2_tests$detail |> filter(statistic == "diag.ac") |> select(est) |> round(digits = 2) |> as.numeric()
+ev_m2_nr2 <- psrsq(ev_m2)
+
+ev_m3 <- svyglm(covid_impact_mh_neg ~  event_parentlostjob + event_nofood + event_nobills + event_seriousill + event_familydied + event_arguewithparents + event_arguebetweenparents + event_movehouse + event_parentsseparated,
+                         regressiondata, family=quasibinomial(link = "logit")
+                         )
+ev_m3_pred <- predict(ev_m3, newdata = regressiondata, type = "response")
+ev_m3_tests <- table(ifelse(ev_m3_pred > 0.4, 1, 0), regressiondata$variables$covid_impact_mh_neg) |>
+                epi.tests()
+ev_m3_ppv <-ev_m3_tests$detail |> filter(statistic == "diag.ac") |> select(est) |> round(digits = 2) |> as.numeric()
+ev_m1_nr2 <- psrsq(ev_m3)
+
+rm(regressiondata)
+```
+
+# Events results
+
+We begin by reporting difference in young people's perceived ongoing impact of the pandemic on their wellbeing by the number of adverse life events they experienced during the pandemic. The core results are reported in @tbl-results-events-perception.
+```{r}
+#| label: tbl-results-events-perception
+#| tbl-cap: Differences in perceived ongoing impact of pandemic on wellbeing by number of adverse life events experienced during pandemic
+
+tblest1 <- tbl_regression(ev_m1, intercept = TRUE,
+                          exponentiate = TRUE,
+                          label = list(
+                            event_index_poly ~ "Adverse Event Index"
+                          )) |>
+           add_significance_stars() |>
+           add_glance_table(
+            include = c(nobs, df.residual, AIC, BIC),
+            label = list(nobs ~ "N", df.residual ~ "Residual DoF")
+           )
+tblest2 <- tbl_regression(ev_m2, intercept = TRUE,
+                          exponentiate = TRUE,
+                          label = list(
+                            qevent_index_poly ~ "Adverse Event Tercile Groups"
+                          )) |>
+           add_significance_stars() |>
+           add_glance_table(
+            include = c(nobs, df.residual, AIC, BIC),
+            label = list(nobs ~ "N", df.residual ~ "Residual DoF")
+           )
+tblest3 <- tbl_regression(ev_m3, intercept = TRUE,
+                          show_single_row = c(event_parentlostjob, event_nofood, event_nobills, event_seriousill, event_familydied, event_arguewithparents, event_arguebetweenparents, event_movehouse, event_parentsseparated),
+                          exponentiate = TRUE) |>
+           add_significance_stars() |>
+           add_glance_table(
+            include = c(nobs, df.residual, AIC, BIC),
+            label = list(nobs ~ "N", df.residual ~ "Residual DoF")
+           )
+
+theme_gtsummary_compact()
+results_events <- tbl_merge(tbls = list(tblest1, tblest2, tblest3), tab_spanner = c("Event Index", "Tercile Groups", "Individual Events")) |>
+          modify_table_body(~.x |> arrange(row_type == "glance_statistic"))
+reset_gtsummary_theme()
+
+results_events |>
+          as_gt() |> tab_source_note(md("**Notes:** All estimates are weighted and inference accounts for the complex survey design."))
+```
+
+These show that whichever way we operationalise our measure of life events, whether as a continuous index, tercile groups, or individual events, those who experienced more adverse life events during the pandemic are more likely to report a negative ongoing impact of the pandemic on their wellbeing. Unsurprisingly, goodness of fit indicators suggest that the model including each individual event is the best fitting model, followed by the continuous index and then the tercile groups. Using the full set of events to consider overall experience in models would not be feasible, and there is only a small difference in the fit of the continuous index and tercile groups models, so we will use the tercile groups in most of our analyses for reasons of interpretability.
