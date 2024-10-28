@@ -26,12 +26,11 @@ format:
     fig-height: 5
   html:
     lightbox: true
-  pdf:
-    pdf-engine: xelatex
-    mainfont: "Helvetica"
-    monofont: "Menlo"
-    sansfont: "Helvetica"
-    linestretch: 1.5
+    theme: cosmo
+    citations-hover: true
+    crossrefs-hover: true
+    toc-location: left
+    title-block-style: manuscript
 fig-format: png
 cap-location: top
 echo: false
