@@ -1371,7 +1371,7 @@ We find that mean wellbeing score differs by experience of such events (@tbl-eve
 
 However, as with all our descriptive analyses, we are mindful that there is the potential for a lot of differences in socioeconomic and demographic characteristics between those who experience adverse life events and those who do not. For this reason, as well as for our other analyses, we use regression models to help us unpack these findings further.
 
-## Regression analysis {#sec-regression}
+## Analytical approach {#sec-regression}
 
 To extend our descriptive analyses and, hence, provide a more nuanced understanding of the factors associated with young people's wellbeing since the pandemic, we use regression models. All analyses are carried out using the statistical software R [@R2024], with the survey package [@R-survey] used to account for the complex survey design of the data, including design and non-response weights, along with adjustments to statistical inference due to stratification and clustering of the sample.
 
