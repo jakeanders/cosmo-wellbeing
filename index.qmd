@@ -2489,7 +2489,7 @@ Predicted wellbeing by perceived ongoing impact of pandemic on wellbeing and Soc
 
 :::
 
-We also explore whether the difference associated with this perception is moderated by key demographic characteristics, particularly focussing on gender and social provisions. The results for gender are plotted in @fig-pred-diff-gender and suggest that the differences in wellbeing by perceived ongoing impact of the pandemic on wellbeing are larger for boys, although this is only statistically significant at the 10% level and for Wave 1 so this is rather a tentative finding. The results for social provisions are plotted in @fig-pred-diff-sps and suggest little variation in the difference in wellbeing by perceived ongoing impact of the pandemic on wellbeing depending on the level of social provisions.
+We also explore whether the difference associated with this perception is moderated by social provisions (@fig-pred-diff-sps), finding little variation in the difference in wellbeing by perceived ongoing impact of the pandemic on wellbeing depending on the level of social provisions.
 
 ### Adverse life events {#sec-results-events}
 
