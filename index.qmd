@@ -1385,7 +1385,23 @@ $LifeSat_{it} = \beta_0 + \beta'_{1} SES_{i} + \beta'_{2} Gender_{i} + \beta'_{3
 
 where $LifeSat$ is the wellbeing score for person $i$ at time $t$, $SES$ is a vector of binary variables for the quintile groups of SES (leaving the highest SES quintile group as the omitted category), $Gender$ is a vector of binary variables for gender variables (Female and Non-binary+, leaving Male as the omitted category), $Ethnicity$ is a vector of binary variables for ethnicity (White, Asian, Black, Mixed, Other, leaving the omitted category as Mixed), $X$ is a vector of other covariates, which varies between model specifications (discussed further below), and $\varepsilon$ is the error term. We estimate these models separately for each time point of the survey, and then again for Wave 2 with an additional covariate of Wave 1 wellbeing score to provide estimates of difference adjusting for Wave 1 wellbeing as a baseline.
 
-We begin with simple models including gender (L1), ethnicity (L2), and SES (L3) entered separately, replicating the descriptive analyses and unconditional estimates of differences in wellbeing reported in @tbl-demographics-lifesat. Next, we include all three demographic characteristics at the same time in L4, along with the addition of a month of interview variable to allow for potential confounding due to the timing of the survey. This model, hence, provides estimates of demographic differences in wellbeing, conditional on the other demographic characteristics included. 
+:::{#tbl-regression-lifesat-lookup}
+
+| Variable       | L1       | L2       | L3       | L4       | L5                                 | L6       | L7                                      | L8       |
+|----------------|----------|----------|----------|----------|------------------------------------|----------|-----------------------------------------|----------|
+| Gender         | Included |          |          | Included | Interacted w/ Ethnicity and SES    | Included | Interacted w/ Social Support            | Included |
+| Ethnicity      |          | Included |          | Included | Interacted w/ Gender and SES       | Included | Interacted w/ Social Support            | Included |
+| SES            |          |          | Included | Included | Interacted w/ Gender and Ethnicity | Included | Interacted w/ Social Support            | Included |
+| Social Support |          |          |          |          |                                    | Included | Interacted w/ Gender, Ethnicity and SES | Included |
+| Adverse Events |          |          |          |          |                                    |          |                                         | Included |
+
+**Notes**: L1-L7 refer to the model number. SES = Socioeconomic status.
+
+Model specifications for regression analysis of subjective wellbeing.
+
+:::
+
+We estimate a series of models summarised in @tbl-regression-lifesat-lookup, beginning with simple models including gender (L1), ethnicity (L2), and SES (L3) entered separately, replicating the descriptive analyses and unconditional estimates of differences in wellbeing reported in @tbl-demographics-lifesat. Next, we include all three demographic characteristics at the same time in L4, along with the addition of a month of interview variable to allow for potential confounding due to the timing of the survey. This model, hence, provides estimates of demographic differences in wellbeing, conditional on the other demographic characteristics included. 
 
 We then explore evidence of intersectional differences in wellbeing between our core demographics in L5 [@CodiroliMcmaster2019] by including a full set of interaction terms between our SES, gender and ethnicity variables.
 
@@ -1542,7 +1558,22 @@ $LifeSat_{it} = \beta_0 + \beta'_{1} PandemicImpactPercep_{i} + X'_{i} + \vareps
 
 where $LifeSat$ is the wellbeing score for person $i$ at time $t$, $PandemicImpactPercep$ is a binary variable indicating that person $i$ reports that the pandemic is continuing to have a negative impact on their life, $X$ is a vector of other covariates, which varies between model specifications (discussed further below), and $\varepsilon$ is the error term. We estimate these models separately for each time point of the survey, and then again for Wave 2 with an additional covariate of Wave 1 wellbeing to provide estimates of difference adjusting for Wave 1 wellbeing as a baseline.
 
-Our first model (P1) again replicates our descriptive findings by including no additional covariates, meaning the coefficient on $PandemicImpactPercep$ reports the difference between those who report that the pandemic had a negative impact on their mental wellbeing and the rest of the cohort (no longer disaggregating the ‘don’t know’ and ‘positive’ groups).
+:::{#tbl-regression-percept-lookup}
+
+| Variable         | P1       | P2       | P3       | P4                                                   |
+|------------------|----------|----------|----------|------------------------------------------------------|
+| Perceived Impact | Included | Included | Included | Interacted with Demographics, SES and Social Support |
+| Demographics     |          | Included | Included | Interacted with Perceived Impact                     |
+| SES              |          | Included | Included | Interacted with Perceived Impact                     |
+| Social Support   |          |          | Included | Interacted with Perceived Impact                     |
+
+**Notes**: P1-P4 refer to the model number. SES = Socioeconomic status.
+
+Model specifications for regression analysis of subjective wellbeing.
+
+:::
+
+The series of models is summarised in @tbl-regression-percept-lookup, with the first model (P1) again replicating our descriptive findings by including no additional covariates, meaning the coefficient on $PandemicImpactPercep$ reports the difference between those who report that the pandemic had a negative impact on their mental wellbeing and the rest of the cohort (no longer disaggregating the ‘don’t know’ and ‘positive’ groups).
 
 Next, in P2, we include demographic (gender, ethnicity) and socioeconomic status (parental education, housing tenure, and area-level deprivation) covariates. We do this, rather than including combined SES quintile groups, now that we are not trying to interpret an overall SES association but rather adjust for these as flexibly as possible. We also include month of survey at this point. Our focal coefficient from this model thus estimates the difference in wellbeing associated with a continuing negative perception of the pandemic on wellbeing among those with similar socio-demographic characteristics.
 
@@ -1641,7 +1672,23 @@ $LifeSat_{it} = \beta_0 + \beta'_{1} TAdverseEventIndex_{i} + X'_{i} + \varepsil
 
 where $LifeSat$ is the wellbeing score for person $i$ at time $t$, $TAdverseEventIndex$ is a vector of binary variables indicating person $i$’s location in the distribution of the adverse life event index (high and medium, leaving low as a baseline), $X$ is a vector of other covariates, which varies between model specifications (discussed further below), and $\varepsilon$ is the error term. We estimate these models separately for each time point of the survey, and then again for Wave 2 with an additional covariate of Wave 1 wellbeing to provide estimates of difference adjusting for Wave 1 wellbeing as a baseline. Where we are modelling wellbeing measured at Wave 1, a variant of our events index is used that is based on Wave 1 event reports only.
 
-Our first model (E1) again replicates our descriptive findings by including only the tercile groups of the adverse life events index, meaning the coefficients on each level of $TAdverseEventIndex$ report the difference between those who experience medium and high levels of adverse events, as applicable, compared to the low adverse life events group. In preliminary work to inform our approach, we explored alternative ways of including information on adverse life events in our modelling, including using the index as a continuous variable and including a set of binary variables for the individual adverse life events, as listed in @sec-data. We found that including tercile groups provided the most interpretable results without substantively affecting the model fit.
+:::{#tbl-regression-lifeevents-lookup}
+
+| Variable         | E1       | E2       | E3       | E4       | E5                                                   |
+|------------------|----------|----------|----------|----------|------------------------------------------------------|
+| Adverse Events   | Included | Included | Included | Included | Interacted with Demographics, SES, Social Support and Perceived Impact |
+| Demographics     |          | Included | Included | Included | Interacted with Adverse Events                        |
+| SES              |          | Included | Included | Included | Interacted with Adverse Events                        |
+| Social Support   |          |          | Included | Included | Interacted with Adverse Events                        |
+| Perceived Impact |          |          |          | Included | Interacted with Adverse Events                        |  
+
+**Notes**: E1-E5 refer to the model number. SES = Socioeconomic status.
+
+Model specifications for regression analysis of subjective wellbeing by life events.
+
+:::
+
+Our series of models is summarised in @tbl-regression-lifeevents-lookup, with the first model (E1) again replicating our descriptive findings by including only the tercile groups of the adverse life events index, meaning the coefficients on each level of $TAdverseEventIndex$ report the difference between those who experience medium and high levels of adverse events, as applicable, compared to the low adverse life events group. In preliminary work to inform our approach, we explored alternative ways of including information on adverse life events in our modelling, including using the index as a continuous variable and including a set of binary variables for the individual adverse life events, as listed in @sec-data. We found that including tercile groups provided the most interpretable results without substantively affecting the model fit.
 
 Next, in E2, we add in demographic characteristics (gender, ethnicity) and socioeconomic status indicators (parental education, housing tenure, and area-level deprivation). We also include month of survey at this point. Our coefficient estimates associated with adverse life events from this model thus provides an estimate of difference in wellbeing associated with greater experiences of adverse life events during the pandemic among those with similar socio-demographic characteristics, as well as the extent to which differential distribution of such life events across socio-demographic groups explains differences in reported wellbeing.
 
@@ -1763,23 +1810,7 @@ In this section, we discuss the results of the regression models outlined in the
 
 ### Demographic differences in subjective wellbeing {#sec-results-lifesat}
 
-First, we explore overall differences in wellbeing, through a series of models summarised (for ease of reference) in @tbl-regression-lifesat-lookup. The core results are plotted in @fig-results-lifesat-gender for gender, @fig-results-lifesat-ethnic for ethnicity, and @fig-results-lifesat-ses for SES. In each case, results are presented for Wave 1, Wave 2, and Wave 2 adjusted for Wave 1, with the discussion starting out with Wave 1 in each case, before focussing on any notable differences in the pattern for Wave 2, or Wave 2 adjusted for Wave 1. Full tables of results for these models are reported in @sec-appendix-regression, specifically @tbl-results-lifesat-w1 for Wave 1, @tbl-results-lifesat-w2 for Wave 2, and @tbl-results-lifesat-diff for Wave 2 adjusted for Wave 1.
-
-:::{#tbl-regression-lifesat-lookup}
-
-| Variable       | L1       | L2       | L3       | L4       | L5                                 | L6       | L7                                      | L8       |
-|----------------|----------|----------|----------|----------|------------------------------------|----------|-----------------------------------------|----------|
-| Gender         | Included |          |          | Included | Interacted w/ Ethnicity and SES    | Included | Interacted w/ Social Support            | Included |
-| Ethnicity      |          | Included |          | Included | Interacted w/ Gender and SES       | Included | Interacted w/ Social Support            | Included |
-| SES            |          |          | Included | Included | Interacted w/ Gender and Ethnicity | Included | Interacted w/ Social Support            | Included |
-| Social Support |          |          |          |          |                                    | Included | Interacted w/ Gender, Ethnicity and SES | Included |
-| Adverse Events |          |          |          |          |                                    |          |                                         | Included |
-
-**Notes**: L1-L7 refer to the model number. SES = Socioeconomic status.
-
-Model specifications for regression analysis of subjective wellbeing.
-
-:::
+First, we explore overall differences in wellbeing, through the series of models summarised in @tbl-regression-lifesat-lookup. The core results are plotted in @fig-results-lifesat-gender for gender, @fig-results-lifesat-ethnic for ethnicity, and @fig-results-lifesat-ses for SES. In each case, results are presented for Wave 1, Wave 2, and Wave 2 adjusted for Wave 1, with the discussion starting out with Wave 1 in each case, before focussing on any notable differences in the pattern for Wave 2, or Wave 2 adjusted for Wave 1. Full tables of results for these models are reported in @sec-appendix-regression, specifically @tbl-results-lifesat-w1 for Wave 1, @tbl-results-lifesat-w2 for Wave 2, and @tbl-results-lifesat-diff for Wave 2 adjusted for Wave 1.
 
 ```{r}
 #| label: results-lifesat-w1
@@ -2187,22 +2218,7 @@ We explore the potential for intersectional differences between the demographic 
 
 ### Perceived continuing impact of the pandemic on wellbeing {#sec-results-percep}
 
-Next, we discuss differences in wellbeing by perceived continuing impact of the pandemic. Again, we summarise the models used to explore this issue in @tbl-regression-percept-lookup. The core results are plotted in @fig-results-percep. Full tables of results for these models are reported in @sec-appendix-regression, @tbl-results-percep-w1 (Wave 1), @tbl-results-percep-w2 (Wave 2) and @tbl-results-percep-diff (Wave 2 adjusting for Wave 1).
-
-:::{#tbl-regression-percept-lookup}
-
-| Variable         | P1       | P2       | P3       | P4                                                   |
-|------------------|----------|----------|----------|------------------------------------------------------|
-| Perceived Impact | Included | Included | Included | Interacted with Demographics, SES and Social Support |
-| Demographics     |          | Included | Included | Interacted with Perceived Impact                     |
-| SES              |          | Included | Included | Interacted with Perceived Impact                     |
-| Social Support   |          |          | Included | Interacted with Perceived Impact                     |
-
-**Notes**: P1-P4 refer to the model number. SES = Socioeconomic status.
-
-Model specifications for regression analysis of subjective wellbeing.
-
-:::
+Next, we discuss differences in wellbeing by perceived continuing impact of the pandemic using the models summarised in @tbl-regression-percept-lookup. The core results are plotted in @fig-results-percep. Full tables of results for these models are reported in @sec-appendix-regression, @tbl-results-percep-w1 (Wave 1), @tbl-results-percep-w2 (Wave 2) and @tbl-results-percep-diff (Wave 2 adjusting for Wave 1).
 
 ```{r}
 #| label: results-percep-w1
@@ -2493,23 +2509,7 @@ We also explore whether the difference associated with this perception is modera
 
 ### Adverse life events {#sec-results-events}
 
-Next, we turn to the importance of adverse life events for young people's wellbeing. This is explored through a series of models that, for ease of reference, are summarised in @tbl-regression-lifeevents-lookup; full results are reported in @tbl-results-events-w1, @tbl-results-events-w2 and @tbl-results-events-diff in @sec-appendix-regression. The core results are plotted in @fig-results-events, demonstrating the association unconditionally (E1), adjusting for demographic measures (E2), and adjusting also for social support (E3).
-
-:::{#tbl-regression-lifeevents-lookup}
-
-| Variable         | E1       | E2       | E3       | E4       | E5                                                   |
-|------------------|----------|----------|----------|----------|------------------------------------------------------|
-| Adverse Events   | Included | Included | Included | Included | Interacted with Demographics, SES, Social Support and Perceived Impact |
-| Demographics     |          | Included | Included | Included | Interacted with Adverse Events                        |
-| SES              |          | Included | Included | Included | Interacted with Adverse Events                        |
-| Social Support   |          |          | Included | Included | Interacted with Adverse Events                        |
-| Perceived Impact |          |          |          | Included | Interacted with Adverse Events                        |  
-
-**Notes**: E1-E5 refer to the model number. SES = Socioeconomic status.
-
-Model specifications for regression analysis of subjective wellbeing by life events.
-
-:::
+Next, we turn to the importance of adverse life events for young people's wellbeing. This is explored through the series of models summarised in @tbl-regression-lifeevents-lookup; full results are reported in @tbl-results-events-w1, @tbl-results-events-w2 and @tbl-results-events-diff in @sec-appendix-regression. The core results are plotted in @fig-results-events, demonstrating the association unconditionally (E1), adjusting for demographic measures (E2), and adjusting also for social support (E3).
 
 ```{r}
 #| label: results-events-w1
