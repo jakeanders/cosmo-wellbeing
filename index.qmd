@@ -24,6 +24,7 @@ format:
   docx:
     fig-width: 7
     fig-height: 5
+    table-cap-position: bottom
   html:
     lightbox: true
     theme: cosmo
