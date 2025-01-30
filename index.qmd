@@ -2494,51 +2494,6 @@ A fairly small part of the difference in wellbeing score is explained by inclusi
 
 The unconditional difference in wellbeing by perceived continuing impact of the pandemic on wellbeing at Wave 2 is lower in models where we have adjusted for Wave 1 wellbeing (`{r} abs(as.numeric(inline_text(results_percep_d, variable = covid_impact_mh_neg, level = "Yes", column = "estimate_1")))` points). However, demographic and social support controls make essentially no difference for this outcome, with the difference remaining `{r} abs(as.numeric(inline_text(results_percep_d, variable = covid_impact_mh_neg, level = "Yes", column = "estimate_3")))` points once these have been included, with a very similar magnitude to that seen in the fully adjusted model for Wave 1.
 
-:::{#fig-pred-diff-gender}
-
-```{r}
-#| label: results-pred-diff-gender
-#| fig-subcap:
-#|  - "Wave 1"
-#|  - "Wave 2"
-#|  - "Wave 2 adjusted for Wave 1"
-#| layout-nrow: 3
-
-prediction_data <- merged |> restrict_sample() |> create_survey_design() |>
-                         standardise_ses_poly() |> standardise_psych() |> standardise_event_index_poly() |> create_qses_groups() |> create_qevent_groups()
-
-plot_predictions(lp_w1_m4,
-  by = c("gender", "covid_impact_mh_neg"),
-  wts = prediction_data$probs
-  ) +
-  labs(x = "Gender",
-       y = "Difference in wellbeing",
-       colour = "COVID Lasting Impact on WB")
-
-plot_predictions(lp_w2_m4,
-  by = c("gender", "covid_impact_mh_neg"),
-  wts = prediction_data$probs
-  ) +
-  labs(x = "Gender",
-       y = "Difference in wellbeing",
-       colour = "COVID Lasting Impact on WB")
-
-plot_predictions(lp_d_m4,
-  by = c("gender", "covid_impact_mh_neg"),
-  wts = prediction_data$probs
-  ) +
-  labs(x = "Gender",
-       y = "Difference in wellbeing",
-       colour = "COVID Lasting Impact on WB")
-rm(prediction_data)
-```
-
-**Notes:** Predictions derived from underlying regression models reported in @tbl-results-percep-w1, @tbl-results-percep-w2, and @tbl-results-percep-diff.
-
-Predicted wellbeing by perceived ongoing impact of pandemic on wellbeing and gender
-
-:::
-
 :::{#fig-pred-diff-sps}
 
 ```{r}
@@ -2588,7 +2543,7 @@ Predicted wellbeing by perceived ongoing impact of pandemic on wellbeing and Soc
 
 :::
 
-We also explore whether the difference associated with this perception is moderated by key demographic characteristics, particularly focussing on gender and social provisions. The results for gender are plotted in @fig-pred-diff-gender and suggest that the differences in wellbeing by perceived ongoing impact of the pandemic on wellbeing are larger for boys, although this is only statistically significant at the 10% level and for Wave 1 so this is rather a tentative finding. The results for social provisions are plotted in @fig-pred-diff-sps and suggest little variation in the difference in wellbeing by perceived ongoing impact of the pandemic on wellbeing depending on the level of social provisions.
+We also explore whether the difference associated with this perception is moderated by social provisions (@fig-pred-diff-sps), finding little variation in the difference in wellbeing by perceived ongoing impact of the pandemic on wellbeing depending on the level of social provisions.
 
 ### Adverse life events {#sec-results-events}
 
@@ -2961,6 +2916,53 @@ results_events_d |>
           as_gt() |> tab_source_note(md("**Notes:** All estimates are weighted and inference accounts for the complex survey design."))
 reset_gtsummary_theme()
 ```
+
+:::
+
+## Appendix: Supplementary Results {#sec-appendix-supplementary-results}
+
+:::{#fig-pred-diff-gender}
+
+```{r}
+#| label: results-pred-diff-gender
+#| fig-subcap:
+#|  - "Wave 1"
+#|  - "Wave 2"
+#|  - "Wave 2 adjusted for Wave 1"
+#| layout-nrow: 3
+
+prediction_data <- merged |> restrict_sample() |> create_survey_design() |>
+                         standardise_ses_poly() |> standardise_psych() |> standardise_event_index_poly() |> create_qses_groups() |> create_qevent_groups()
+
+plot_predictions(lp_w1_m4,
+  by = c("gender", "covid_impact_mh_neg"),
+  wts = prediction_data$probs
+  ) +
+  labs(x = "Gender",
+       y = "Difference in wellbeing",
+       colour = "COVID Lasting Impact on WB")
+
+plot_predictions(lp_w2_m4,
+  by = c("gender", "covid_impact_mh_neg"),
+  wts = prediction_data$probs
+  ) +
+  labs(x = "Gender",
+       y = "Difference in wellbeing",
+       colour = "COVID Lasting Impact on WB")
+
+plot_predictions(lp_d_m4,
+  by = c("gender", "covid_impact_mh_neg"),
+  wts = prediction_data$probs
+  ) +
+  labs(x = "Gender",
+       y = "Difference in wellbeing",
+       colour = "COVID Lasting Impact on WB")
+rm(prediction_data)
+```
+
+**Notes:** Predictions derived from underlying regression models reported in @tbl-results-percep-w1, @tbl-results-percep-w2, and @tbl-results-percep-diff.
+
+Predicted wellbeing by perceived ongoing impact of pandemic on wellbeing and gender
 
 :::
 
