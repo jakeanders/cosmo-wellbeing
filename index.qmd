@@ -392,7 +392,7 @@ However, this is not the focus of our paper. This aggregate stability at the coh
 
 ### Social support
 
-Various reviews of the impact of the pandemic have highlighted that one's ability to draw on support around you appears important in helping to buffer shocks to wellbeing [@Aksoy2024], using these as resources on which young people are able to draw in the face of adversity.
+Social support is concerned with the extent to which an individual is, or perceives they are, "cared for, esteemed, and valued by people in his or her social network" [p. 691, @Demaray2005] Various reviews of the impact of the pandemic have highlighted that one's ability to draw on support around you appears important in helping to buffer shocks to wellbeing [@Aksoy2024], using these as resources on which young people are able to draw in the face of adversity.
 
 To capture this factor, we use the social provisions scale [@Cutrona2018], specifically a shortened three-item variant available in COSMO in which young people are asked to respond (using the categories "Not true", "Partly true" or "Very true") to the statements:
 
