@@ -2812,19 +2812,33 @@ Building on the models reported in @fig-results-events, we also explore whether 
 
 We did also explore whether there was evidence that adverse events matter more for some groups than others using interactions between adverse life events and key demographic characteristics. These results are reported in column E5 of @tbl-results-events-w1, @tbl-results-events-w2 and @tbl-results-events-diff in @sec-appendix-regression. There is little evidence of any systematic moderation of the main effects that we have discussed.
 
-## Conclusions {#sec-conclusions}
+## Discussion {#sec-discussion}
 
-This paper contributes to existing literature on young people's wellbeing in England in the aftermath of the COVID-19 pandemic by exploring levels of wellbeing at two time points since the pandemic and the factors associated with these levels. In particular, we build on existing work showing that the pandemic has had a negative impact on young people's wellbeing [e.g., @Mansfield2022a], along with evidence of some initial recovery in wellbeing in the latter phases of the pandemic [@Henseke2022].
+In this paper we have provided new evidence in relation to our three research questions:
+1. estimate differences in post-pandemic wellbeing among this cohort by demographic characteristics;
+2. validate and quantify young people’s own perceptions of the impact of the pandemic on their wellbeing and; 
+3. consider the role of adverse experiences during the pandemic — and how they may interact with existing predictors of wellbeing — in explaining differences in post-pandemic wellbeing.
+
+### Differences in wellbeing by demographic characteristics
 
 We contribute to evidence on ongoing issues of gender differences in wellbeing, which other evidence demonstrates to have been exacerbated by the pandemic [e.g., @Davillas2021]. Girls and those who identify as non-binary or in another way report lower wellbeing scores (on a scale from 1-10 around 0.5 for girls; around 1.5 for non-binary+ young people) than boys. This is even after adjusting for other demographic characteristics, self-reported levels of social support and experience of adverse life events. These are substantial differences that are relevant to the higher rates of mental health challenges for those in these groups. In particular, the large differences associated with identifying as non-binary or in another way suggest the need for targeted support for those in this group.
 
+### Perceived continuing impact of the pandemic on wellbeing
+
 Our analysis makes innovative use of young people’s own perceptions of the ongoing impact of the pandemic on their mental wellbeing in order to validate and quantify these reports. The findings of these analyses illustrate the importance of taking such reports seriously: those who indicate an ongoing negative impact in their lives have substantially lower subjective wellbeing scores — more than 1 point on a 1-10 scale — with similar differences across demographic groups.
+
+### Importance of adverse life events
 
 Adverse life events experienced during the pandemic are shown to predict lower subjective wellbeing, although they can explain only a fairly small part of the lower scores we see among those who perceive an ongoing impact of the pandemic on their mental wellbeing. Contrary to our expectations, and in contrast to others' findings [@Racine2021], while social support predicts higher wellbeing scores, we did not find evidence that it mediates or buffers the impact of adverse life events in our population.
 
-This study benefits from a large, representative, longitudinal dataset, with direct reports from both young people and parents to improve the quality of data collected. Nevertheless, in drawing these conclusions, we are mindful of the limitations of this study, most particularly that our data lacks any pre-pandemic baseline measures of wellbeing, which would substantially increase our ability to understand the longer-term dynamics of the changes (or lack thereof) in wellbeing that we have observed. We should also be aware that our data is drawn from a single cohort of young people in England, whose final years in compulsory education were especially disrupted by the impacts of the pandemic, which is important context in any attempt to generalise our findings to other populations.
+
+## Conclusions and limitations {#sec-conclusions}
+
+This paper contributes to existing literature on young people's wellbeing in England in the aftermath of the COVID-19 pandemic by exploring levels of wellbeing at two time points since the pandemic and the factors associated with these levels. In particular, we build on existing work showing that the pandemic has had a negative impact on young people's wellbeing [e.g., @Mansfield2022a], along with evidence of some initial recovery in wellbeing in the latter phases of the pandemic [@Henseke2022].
 
 Our findings indicate continuing challenges of inequalities in young people's wellbeing and, hence, the importance of ongoing targeted support to overcome these. The practicalities of providing this at scale are now much harder for our specific cohort, since many of whom have now left education entirely. Nevertheless, many of the issues discussed will apply similarly to those still working their way through the education system who could be reached through schools and colleges. As well as the negative implications for the life experiences of these young people, ignoring this issue has potential implications for national economic performance [@Deaton2008a], including via increased risk of mental health challenges [@Lombardo2018].
+
+This study benefits from a large, representative, longitudinal dataset, with direct reports from both young people and parents to improve the quality of data collected. Nevertheless, in drawing these conclusions, we are mindful of the limitations of this study, most particularly that our data lacks any pre-pandemic baseline measures of wellbeing, which would substantially increase our ability to understand the longer-term dynamics of the changes (or lack thereof) in wellbeing that we have observed. We should also be aware that our data is drawn from a single cohort of young people in England, whose final years in compulsory education were especially disrupted by the impacts of the pandemic, which is important context in any attempt to generalise our findings to other populations.
 
 ## References {.unnumbered}
 
