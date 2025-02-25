@@ -473,7 +473,96 @@ Fundamentally, using our data alone we are unable to adjudicate between multiple
 
 However, this is not the focus of our paper. This aggregate stability at the cohort level does not mean that there are not individual-level differences or differential change in reported wellbeing. The correlation between the reported measures in Waves 1 and 2 is `{r} round(ZLifeSat_cov$cor[1,2], digits=2)`. While some of this likely reflects the natural fluctuation in young people's wellbeing due to idiosyncratic shocks that hit their lives every day, we now go on to explore evidence of systematic difference in change between the two waves, along with the differences in levels at each wave.
 
-### Demographic characteristics and social support
+### Social support
+
+Social support is concerned with the extent to which an individual is, or perceives they are, "cared for, esteemed, and valued by people in his or her social network" [p. 691, @Demaray2005]. As such, it directly relates to multiple aspects of the social production function framework used by this paper, specifically status, affection and, potentially, behavioural confirmation. As such, we would anticipate both that individuals with greater social support will have higher levels of wellbeing [@Li2021, @Magson2021] and, because of the potential for substitution between these components in the production of wellbeing, the possibility of social support buffering shocks to other aspects. More empirically, it has been observed that the ability to draw on support around you appears important in helping to buffer shocks to wellbeing in the face of adversity [@Aksoy2024, @Kearns2015, @McMahon2023].
+
+To capture this factor, we use the social provisions scale [@Cutrona2018], specifically a shortened three-item variant available in COSMO in which young people are asked to respond (using the categories "Not true", "Partly true" or "Very true") to the statements:
+
+1. I have family and friends who help me feel safe, secure and happy
+2. There is someone I trust whom I would turn to for advice if I were having problems
+3. There is no one I feel close to [Negatively coded]
+```{r}
+#| label: data-recode-psych
+suppressWarnings(val_labels(merged$sps_1) <- NULL)
+suppressWarnings(merged[, sps_1 := NULL])
+merged[W1_ZSOCPROV_01>=0 & !is.na(W1_ZSOCPROV_01), sps_1 := W1_ZSOCPROV_01]
+merged[, sps_1 := mapvalues(sps_1, from=c(1, 2, 3), to=c(2, 1, 0))]
+var_label(merged$sps_1) <- "I have family and friends who help me feel safe, secure and happy"
+val_labels(merged$sps_1) <- NULL
+val_label(merged$sps_1, 0) <- "Not true"
+val_label(merged$sps_1, 1) <- "Partly true"
+val_label(merged$sps_1, 2) <- "Very true"
+
+suppressWarnings(val_labels(merged$sps_2) <- NULL)
+suppressWarnings(merged[, sps_2 := NULL])
+merged[W1_ZSOCPROV_02>=0 & !is.na(W1_ZSOCPROV_02), sps_2 := W1_ZSOCPROV_02]
+merged[, sps_2 := mapvalues(sps_2, from=c(1, 2, 3), to=c(2, 1, 0))]
+var_label(merged$sps_2) <- "There is someone I trust whom I would turn to for advice if I were having problems"
+val_labels(merged$sps_2) <- NULL
+val_label(merged$sps_2, 0) <- "Not true"
+val_label(merged$sps_2, 1) <- "Partly true"
+val_label(merged$sps_2, 2) <- "Very true"
+
+suppressWarnings(val_labels(merged$sps_3) <- NULL)
+suppressWarnings(merged[, sps_3 := NULL])
+merged[W1_ZSOCPROV_03>=0 & !is.na(W1_ZSOCPROV_03), sps_3 := W1_ZSOCPROV_03]
+merged[, sps_3 := mapvalues(sps_3, from=c(1, 2, 3), to=c(0, 1, 2))]
+var_label(merged$sps_3) <- "There is no one I feel close to"
+val_labels(merged$sps_3) <- NULL
+val_label(merged$sps_3, 0) <- "Very true"
+val_label(merged$sps_3, 1) <- "Partly true"
+val_label(merged$sps_3, 2) <- "Not true"
+
+suppressWarnings(merged[, c('sps_total') := NULL])
+merged[, sps_total := rowSums(.SD), .SDcols = patterns('sps_*')]
+var_label(merged$sps_total) <- "Social Provisions Scale"
+
+merged[, sps_1 := to_factor(sps_1)]
+merged[, sps_2 := to_factor(sps_2)]
+merged[, sps_3 := to_factor(sps_3)]
+
+```
+
+```{r}
+#| label: data-standardise-psych
+
+standardise_psych <- function(survey_data) {
+
+  survey_data$variables$sps_total <- survey_data$variables$sps_total /
+                               sqrt(svyvar(~sps_total, survey_data, na.rm = TRUE))
+  survey_data$variables$sps_total <- survey_data$variables$sps_total -
+                               svymean(~sps_total, survey_data, na.rm = TRUE)
+
+  return(survey_data)
+}
+```
+
+::: {#fig-psych-dist}
+```{r}
+#| label: data-psych-dist
+
+mean <- round(svymean(~sps_total, merged |> restrict_sample() |> create_survey_design() |> standardise_psych(), na.rm=TRUE), digits = 2)
+sd <- round(sqrt(svyvar(~sps_total, merged |> restrict_sample() |> create_survey_design() |> standardise_psych(), na.rm=TRUE)), digits = 2)
+
+merged |> restrict_sample() |> create_survey_design() |>
+  standardise_psych() |>
+  ggsurvey() +
+    geom_histogram(aes(sps_total), bins = 7) +
+    labs(x = "Social Provisions Scale", y = "Count") +
+    annotate(geom = "text", x = -3, y = 2000,
+    label = paste0("Mean = ", mean, "; SD= ", sd))
+```
+
+**Notes:** Distribution of social provisions scale. The scale is standardised to have mean 0 and standard deviation 1 in the analysis sample. Weighted for survey design and non-response.
+
+Distribution of social provisions scale
+
+:::
+
+Following standard practice, we sum over the values of the three items and then standardise the resulting variable to have a mean of zero and a standard deviation of one for the purposes of interpretation. We plot the distribution of the social provisions scale in @fig-psych-dist. There is some evidence of a ceiling effect — the majority of respondents scoring the maximum value of 6 on the scale — but with a decent spread below this. We will use this measure as a continuous variable in our analyses.
+
+### Demographic characteristics
 
 As discussed at the outset of this paper, previous work has found that the impact of the pandemic on young people's wellbeing differs depending upon their demographic characteristics [e.g., @Anders2023]. Both to estimate differences between young people based on these characteristics, and to control for these measures in other analyses, we make use of the rich set of demographic measures collected in COSMO. Specifically, we construct the following measures of demographic characteristics.
 
@@ -765,91 +854,6 @@ merged |> restrict_sample() |> create_survey_design() |>
             modify_footnote(all_stat_cols() ~ NA) |>
             as_gt() |> tab_source_note(md("**Notes:** Reporting column percentages within each variable. All estimates are weighted for survey design and non-response."))
 ```
-
-Various reviews of the impact of the pandemic have highlighted that one's ability to draw on support around you appears important in helping to buffer shocks to wellbeing [@Aksoy2024], using these as resources on which young people are able to draw in the face of adversity. To capture this factor, we use the social provisions scale [@Cutrona2018], specifically a shortened three-item variant available in COSMO in which young people are asked to respond (using the categories "Not true", "Partly true" or "Very true") to the statements:
-
-1. I have family and friends who help me feel safe, secure and happy
-2. There is someone I trust whom I would turn to for advice if I were having problems
-3. There is no one I feel close to [Negatively coded]
-```{r}
-#| label: data-recode-psych
-suppressWarnings(val_labels(merged$sps_1) <- NULL)
-suppressWarnings(merged[, sps_1 := NULL])
-merged[W1_ZSOCPROV_01>=0 & !is.na(W1_ZSOCPROV_01), sps_1 := W1_ZSOCPROV_01]
-merged[, sps_1 := mapvalues(sps_1, from=c(1, 2, 3), to=c(2, 1, 0))]
-var_label(merged$sps_1) <- "I have family and friends who help me feel safe, secure and happy"
-val_labels(merged$sps_1) <- NULL
-val_label(merged$sps_1, 0) <- "Not true"
-val_label(merged$sps_1, 1) <- "Partly true"
-val_label(merged$sps_1, 2) <- "Very true"
-
-suppressWarnings(val_labels(merged$sps_2) <- NULL)
-suppressWarnings(merged[, sps_2 := NULL])
-merged[W1_ZSOCPROV_02>=0 & !is.na(W1_ZSOCPROV_02), sps_2 := W1_ZSOCPROV_02]
-merged[, sps_2 := mapvalues(sps_2, from=c(1, 2, 3), to=c(2, 1, 0))]
-var_label(merged$sps_2) <- "There is someone I trust whom I would turn to for advice if I were having problems"
-val_labels(merged$sps_2) <- NULL
-val_label(merged$sps_2, 0) <- "Not true"
-val_label(merged$sps_2, 1) <- "Partly true"
-val_label(merged$sps_2, 2) <- "Very true"
-
-suppressWarnings(val_labels(merged$sps_3) <- NULL)
-suppressWarnings(merged[, sps_3 := NULL])
-merged[W1_ZSOCPROV_03>=0 & !is.na(W1_ZSOCPROV_03), sps_3 := W1_ZSOCPROV_03]
-merged[, sps_3 := mapvalues(sps_3, from=c(1, 2, 3), to=c(0, 1, 2))]
-var_label(merged$sps_3) <- "There is no one I feel close to"
-val_labels(merged$sps_3) <- NULL
-val_label(merged$sps_3, 0) <- "Very true"
-val_label(merged$sps_3, 1) <- "Partly true"
-val_label(merged$sps_3, 2) <- "Not true"
-
-suppressWarnings(merged[, c('sps_total') := NULL])
-merged[, sps_total := rowSums(.SD), .SDcols = patterns('sps_*')]
-var_label(merged$sps_total) <- "Social Provisions Scale"
-
-merged[, sps_1 := to_factor(sps_1)]
-merged[, sps_2 := to_factor(sps_2)]
-merged[, sps_3 := to_factor(sps_3)]
-
-```
-
-```{r}
-#| label: data-standardise-psych
-
-standardise_psych <- function(survey_data) {
-
-  survey_data$variables$sps_total <- survey_data$variables$sps_total /
-                               sqrt(svyvar(~sps_total, survey_data, na.rm = TRUE))
-  survey_data$variables$sps_total <- survey_data$variables$sps_total -
-                               svymean(~sps_total, survey_data, na.rm = TRUE)
-
-  return(survey_data)
-}
-```
-
-::: {#fig-psych-dist}
-```{r}
-#| label: data-psych-dist
-
-mean <- round(svymean(~sps_total, merged |> restrict_sample() |> create_survey_design() |> standardise_psych(), na.rm=TRUE), digits = 2)
-sd <- round(sqrt(svyvar(~sps_total, merged |> restrict_sample() |> create_survey_design() |> standardise_psych(), na.rm=TRUE)), digits = 2)
-
-merged |> restrict_sample() |> create_survey_design() |>
-  standardise_psych() |>
-  ggsurvey() +
-    geom_histogram(aes(sps_total), bins = 7) +
-    labs(x = "Social Provisions Scale", y = "Count") +
-    annotate(geom = "text", x = -3, y = 2000,
-    label = paste0("Mean = ", mean, "; SD= ", sd))
-```
-
-**Notes:** Distribution of social provisions scale. The scale is standardised to have mean 0 and standard deviation 1 in the analysis sample. Weighted for survey design and non-response.
-
-Distribution of social provisions scale
-
-:::
-
-Following standard practice, we sum over the values of the three items and then standardise the resulting variable to have a mean of zero and a standard deviation of one for the purposes of interpretation. We plot the distribution of the social provisions scale in @fig-psych-dist. There is some evidence of a ceiling effect — the majority of respondents scoring the maximum value of 6 on the scale — but with a decent spread below this. We will use this measure as a continuous variable in our analyses.
 
 Now that we have constructed this set of measures about young people, we report the prevalence of demographics in our cohort along with mean levels of self-reported wellbeing by these categories at Wave 1, Wave 2, and mean difference between the two in @tbl-demographics-lifesat.
 ```{r}
