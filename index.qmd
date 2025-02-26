@@ -2332,7 +2332,7 @@ A fairly small part of the difference in wellbeing score is explained by inclusi
 
 The unconditional difference in wellbeing by perceived continuing impact of the pandemic on wellbeing at Wave 2 is lower in models where we have adjusted for Wave 1 wellbeing (`{r} abs(as.numeric(inline_text(results_percep_d, variable = covid_impact_mh_neg, level = "Yes", column = "estimate_1")))` points). However, demographic and social support controls make essentially no difference for this outcome, with the difference remaining `{r} abs(as.numeric(inline_text(results_percep_d, variable = covid_impact_mh_neg, level = "Yes", column = "estimate_3")))` points once these have been included, with a very similar magnitude to that seen in the fully adjusted model for Wave 1.
 
-We do not find evidence that social support mediates differences in wellbeing by perceived impact of the pandemic (see @sec-appendix-sec-appendix-supplementary-results).
+We do not find evidence that social support mediates differences in wellbeing by perceived impact of the pandemic (see @sec-appendix-supplementary-results).
 
 ### Adverse life events {#sec-results-events}
 
