@@ -2703,99 +2703,6 @@ merged |> restrict_sample() |> create_survey_design() |>
             as_gt() |> tab_source_note(md("**Notes:** Reporting column percentages within each variable. All estimates are weighted for survey design and non-response."))
 ```
 
-::: {.landscape}
-
-## Appendix: Full regression tables {#sec-appendix-regression}
-
-### Demographic differences in wellbeing
-
-```{r}
-#| label: tbl-results-lifesat-w1
-#| tbl-cap: Differences in wellbeing at Wave 1
-theme_gtsummary_compact()
-results_lifesat_w1 |>
-          as_gt() |> tab_source_note(md("**Notes:** All estimates are weighted and inference accounts for the complex survey design."))
-reset_gtsummary_theme()
-```
-
-```{r}
-#| label: tbl-results-lifesat-w2
-#| tbl-cap: Differences in wellbeing at Wave 2
-theme_gtsummary_compact()
-results_lifesat_w2 |>
-          as_gt() |> tab_source_note(md("**Notes:** All estimates are weighted and inference accounts for the complex survey design."))
-reset_gtsummary_theme()
-```
-
-```{r}
-#| label: tbl-results-lifesat-diff
-#| tbl-cap: Differences in wellbeing at Wave 2 (conditional on Wave 1 wellbeing)
-theme_gtsummary_compact()
-results_lifesat_d |>
-          as_gt() |> tab_source_note(md("**Notes:** All estimates are weighted and inference accounts for the complex survey design."))
-reset_gtsummary_theme()
-```
-
-### Perceived continuing impact of the pandemic on wellbeing
-
-```{r}
-#| label: tbl-results-percep-w1
-#| tbl-cap: Differences in wellbeing at Wave 1 by perceived continuing impact of pandemic on wellbeing
-theme_gtsummary_compact()
-results_percep_w1 |>
-          as_gt() |> tab_source_note(md("**Notes:** All estimates are weighted and inference accounts for the complex survey design."))
-reset_gtsummary_theme()
-```
-
-```{r}
-#| label: tbl-results-percep-w2
-#| tbl-cap: Differences in wellbeing at Wave 2 by perceived continuing impact of pandemic on wellbeing
-theme_gtsummary_compact()
-results_percep_w2 |>
-          as_gt() |> tab_source_note(md("**Notes:** All estimates are weighted and inference accounts for the complex survey design."))
-reset_gtsummary_theme()
-```
-
-```{r}
-#| label: tbl-results-percep-diff
-#| tbl-cap: Differences in wellbeing at Wave 2 (conditional on Wave 1 wellbeing) by perceived continuing impact of pandemic on wellbeing
-theme_gtsummary_compact()
-results_percep_d |>
-          as_gt() |> tab_source_note(md("**Notes:** All estimates are weighted and inference accounts for the complex survey design."))
-reset_gtsummary_theme()
-```
-
-### Adverse life events
-
-```{r}
-#| label: tbl-results-events-w1
-#| tbl-cap: Differences in wellbeing at Wave 1 by number of life events experienced during pandemic
-theme_gtsummary_compact()
-results_events_w1 |>
-          as_gt() |> tab_source_note(md("**Notes:** All estimates are weighted and inference accounts for the complex survey design."))
-reset_gtsummary_theme()
-```
-
-```{r}
-#| label: tbl-results-events-w2
-#| tbl-cap: Differences in wellbeing at Wave 2 by number of life events experienced during pandemic
-theme_gtsummary_compact()
-results_events_w2 |>
-          as_gt() |> tab_source_note(md("**Notes:** All estimates are weighted and inference accounts for the complex survey design."))
-reset_gtsummary_theme()
-```
-
-```{r}
-#| label: tbl-results-events-diff
-#| tbl-cap: Differences in wellbeing at Wave 2 (conditional on Wave 1 wellbeing) by number of life events experienced during pandemic
-theme_gtsummary_compact()
-results_events_d |>
-          as_gt() |> tab_source_note(md("**Notes:** All estimates are weighted and inference accounts for the complex survey design."))
-reset_gtsummary_theme()
-```
-
-:::
-
 ## Appendix: Supplementary Results {#sec-appendix-supplementary-results}
 
 ### Demographic differences in wellbeing
@@ -3013,6 +2920,100 @@ rm(prediction_data)
 Predicted wellbeing by perceived ongoing impact of pandemic on wellbeing and Social Provisions Scale Total Score
 
 :::
+
+::: {.landscape}
+
+## Appendix: Full regression tables {#sec-appendix-regression}
+
+### Demographic differences in wellbeing
+
+```{r}
+#| label: tbl-results-lifesat-w1
+#| tbl-cap: Differences in wellbeing at Wave 1
+theme_gtsummary_compact()
+results_lifesat_w1 |>
+          as_gt() |> tab_source_note(md("**Notes:** All estimates are weighted and inference accounts for the complex survey design."))
+reset_gtsummary_theme()
+```
+
+```{r}
+#| label: tbl-results-lifesat-w2
+#| tbl-cap: Differences in wellbeing at Wave 2
+theme_gtsummary_compact()
+results_lifesat_w2 |>
+          as_gt() |> tab_source_note(md("**Notes:** All estimates are weighted and inference accounts for the complex survey design."))
+reset_gtsummary_theme()
+```
+
+```{r}
+#| label: tbl-results-lifesat-diff
+#| tbl-cap: Differences in wellbeing at Wave 2 (conditional on Wave 1 wellbeing)
+theme_gtsummary_compact()
+results_lifesat_d |>
+          as_gt() |> tab_source_note(md("**Notes:** All estimates are weighted and inference accounts for the complex survey design."))
+reset_gtsummary_theme()
+```
+
+### Perceived continuing impact of the pandemic on wellbeing
+
+```{r}
+#| label: tbl-results-percep-w1
+#| tbl-cap: Differences in wellbeing at Wave 1 by perceived continuing impact of pandemic on wellbeing
+theme_gtsummary_compact()
+results_percep_w1 |>
+          as_gt() |> tab_source_note(md("**Notes:** All estimates are weighted and inference accounts for the complex survey design."))
+reset_gtsummary_theme()
+```
+
+```{r}
+#| label: tbl-results-percep-w2
+#| tbl-cap: Differences in wellbeing at Wave 2 by perceived continuing impact of pandemic on wellbeing
+theme_gtsummary_compact()
+results_percep_w2 |>
+          as_gt() |> tab_source_note(md("**Notes:** All estimates are weighted and inference accounts for the complex survey design."))
+reset_gtsummary_theme()
+```
+
+```{r}
+#| label: tbl-results-percep-diff
+#| tbl-cap: Differences in wellbeing at Wave 2 (conditional on Wave 1 wellbeing) by perceived continuing impact of pandemic on wellbeing
+theme_gtsummary_compact()
+results_percep_d |>
+          as_gt() |> tab_source_note(md("**Notes:** All estimates are weighted and inference accounts for the complex survey design."))
+reset_gtsummary_theme()
+```
+
+### Adverse life events
+
+```{r}
+#| label: tbl-results-events-w1
+#| tbl-cap: Differences in wellbeing at Wave 1 by number of life events experienced during pandemic
+theme_gtsummary_compact()
+results_events_w1 |>
+          as_gt() |> tab_source_note(md("**Notes:** All estimates are weighted and inference accounts for the complex survey design."))
+reset_gtsummary_theme()
+```
+
+```{r}
+#| label: tbl-results-events-w2
+#| tbl-cap: Differences in wellbeing at Wave 2 by number of life events experienced during pandemic
+theme_gtsummary_compact()
+results_events_w2 |>
+          as_gt() |> tab_source_note(md("**Notes:** All estimates are weighted and inference accounts for the complex survey design."))
+reset_gtsummary_theme()
+```
+
+```{r}
+#| label: tbl-results-events-diff
+#| tbl-cap: Differences in wellbeing at Wave 2 (conditional on Wave 1 wellbeing) by number of life events experienced during pandemic
+theme_gtsummary_compact()
+results_events_d |>
+          as_gt() |> tab_source_note(md("**Notes:** All estimates are weighted and inference accounts for the complex survey design."))
+reset_gtsummary_theme()
+```
+
+:::
+
 
 ## Appendix: Multiple Imputation {#sec-appendix-mi}
 
