@@ -1360,7 +1360,7 @@ create_qevent_groups <- function(data) {
 
 ```{r}
 #| label: tbl-events
-#| tbl-cap: Adverse life events experiences by Adverse Events Index group
+#| tbl-cap: Adverse life events experienced by Adverse Events Index group
 
 tbl_events_index_events <- merged |> restrict_sample() |> create_survey_design() |> create_qevent_groups() |>
           tbl_svysummary(
