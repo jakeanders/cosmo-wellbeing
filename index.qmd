@@ -1,6 +1,6 @@
 ---
 title: "Young people’s subjective wellbeing in the wake of the COVID-19 pandemic: evidence from a representative cohort study in England"
-date: "2024/09/30"
+date: "2025/10/28"
 author:
   - name: Jake Anders
     affiliation: UCL Centre for Education Policy & Equalising Opportunities
