@@ -2090,10 +2090,10 @@ reset_gtsummary_theme()
 #|  - "Wave 2 adjusted for Wave 1"
 #| layout-nrow: 3
 
-svyestimations <- list("L1" = ls_w1_m1,
-                       "L4" = ls_w1_m4,
-                       "L6" = ls_w1_m6,
-                       "L8" = ls_w1_m8
+svyestimations <- list("L1 (Gender)" = ls_w1_m1,
+                       "L4 (+ Ethnicity + SES)" = ls_w1_m4,
+                       "L6 (+ Social Support)" = ls_w1_m6,
+                       "L8 (+ Adverse Events)" = ls_w1_m8
                        )
 ggcoef_compare(svyestimations,
                intercept = FALSE,
@@ -2102,10 +2102,10 @@ ggcoef_compare(svyestimations,
                ) +
                labs(x = "Differences in wellbeing")
 
-svyestimations <- list("L1" = ls_w2_m1,
-                       "L4" = ls_w2_m4,
-                       "L6" = ls_w2_m6,
-                       "L8" = ls_w2_m8
+svyestimations <- list("L1 (Gender)" = ls_w2_m1,
+                       "L4 (+ Ethnicity + SES)" = ls_w2_m4,
+                       "L6 (+ Social Support)" = ls_w2_m6,
+                       "L8 (+ Adverse Events)" = ls_w2_m8
                        )
 ggcoef_compare(svyestimations,
                intercept = FALSE,
@@ -2114,10 +2114,10 @@ ggcoef_compare(svyestimations,
                ) +
                labs(x = "Differences in wellbeing")
 
-svyestimations <- list("L1" = ls_d_m1,
-                       "L4" = ls_d_m4,
-                       "L6" = ls_d_m6,
-                       "L8" = ls_d_m8
+svyestimations <- list("L1 (Gender)" = ls_d_m1,
+                       "L4 (+ Ethnicity + SES)" = ls_d_m4,
+                       "L6 (+ Social Support)" = ls_d_m6,
+                       "L8 (+ Adverse Events)" = ls_d_m8
                        )
 ggcoef_compare(svyestimations,
                intercept = FALSE,
@@ -2293,7 +2293,11 @@ reset_gtsummary_theme()
 ```{r}
 #| label: results-percep
 
-w1 <- ggcoef_compare(list("P1" = lp_w1_m1, "P2" = lp_w1_m2, "P3" = lp_w1_m3),
+w1 <- ggcoef_compare(list(
+                        "P1 (Perceived Impact)" = lp_w1_m1,
+                        "P2 (+ Demographics + SES)" = lp_w1_m2,
+                        "P3 (+ Social Support)" = lp_w1_m3)
+                        ,
                intercept = FALSE,
                add_reference_rows = TRUE,
                include = c(covid_impact_mh_neg),
@@ -2301,7 +2305,11 @@ w1 <- ggcoef_compare(list("P1" = lp_w1_m1, "P2" = lp_w1_m2, "P3" = lp_w1_m3),
                facet_labeller = label_wrap_gen(20),
                return_data = TRUE
                )
-w2 <- ggcoef_compare(list("P1" = lp_w2_m1, "P2" = lp_w2_m2, "P3" = lp_w2_m3),
+w2 <- ggcoef_compare(list(
+                        "P1 (Perceived Impact)" = lp_w2_m1,
+                        "P2 (+ Demographics + SES)" = lp_w2_m2,
+                        "P3 (+ Social Support)" = lp_w2_m3
+                        ),
                intercept = FALSE,
                add_reference_rows = TRUE,
                include = c(covid_impact_mh_neg),
@@ -2309,7 +2317,11 @@ w2 <- ggcoef_compare(list("P1" = lp_w2_m1, "P2" = lp_w2_m2, "P3" = lp_w2_m3),
                facet_labeller = label_wrap_gen(20),
                return_data = TRUE
                )
-d <- ggcoef_compare(list("P1" = lp_d_m1, "P2" = lp_d_m2, "P3" = lp_d_m3),
+d <- ggcoef_compare(list(
+                        "P1 (Perceived Impact)" = lp_d_m1,
+                        "P2 (+ Demographics + SES)" = lp_d_m2,
+                        "P3 (+ Social Support)" = lp_d_m3
+                        ),
                intercept = FALSE,
                add_reference_rows = TRUE,
                include = c(covid_impact_mh_neg),
@@ -2318,7 +2330,7 @@ d <- ggcoef_compare(list("P1" = lp_d_m1, "P2" = lp_d_m2, "P3" = lp_d_m3),
                return_data = TRUE
                )
 ggcoef_plot(rbind(w1, w2, d),
-  colour = "model", 
+  colour = "model",
   errorbar_coloured = TRUE,
   dodged = TRUE) +
   labs(x = "Differences in wellbeing")
@@ -2525,21 +2537,33 @@ reset_gtsummary_theme()
 #|  - "Wave 2 adjusted for Wave 1"
 #| layout-nrow: 3
 
-ggcoef_compare(list("E1" = le_w1_m1, "E2" = le_w1_m2, "E3" = le_w1_m3),
+ggcoef_compare(list(
+                  "E1 (Adverse Events)" = le_w1_m1,
+                  "E2 (+ Demographics + SES)" = le_w1_m2,
+                  "E3 (+ Social Support)" = le_w1_m3
+                  ),
                intercept = FALSE,
                add_reference_rows = TRUE,
                include = c(qevent_index_poly),
                facet_labeller = label_wrap_gen(20)
                ) +
                labs(x = "Differences in wellbeing")
-ggcoef_compare(list("E1" = le_w2_m1, "E2" = le_w2_m2, "E3" = le_w2_m3),
+ggcoef_compare(list(
+                  "E1 (Adverse Events)" = le_w2_m1,
+                  "E2 (+ Demographics + SES)" = le_w2_m2,
+                  "E3 (+ Social Support)" = le_w2_m3
+                  ),
                intercept = FALSE,
                add_reference_rows = TRUE,
                include = c(qevent_index_poly),
                facet_labeller = label_wrap_gen(20)
                ) +
                labs(x = "Differences in wellbeing")
-ggcoef_compare(list("E1" = le_d_m1, "E2" = le_d_m2, "E3" = le_d_m3),
+ggcoef_compare(list(
+                  "E1 (Adverse Events)" = le_d_m1,
+                  "E2 (+ Demographics + SES)" = le_d_m2,
+                  "E3 (+ Social Support)" = le_d_m3
+                  ),
                intercept = FALSE,
                add_reference_rows = TRUE,
                include = c(qevent_index_poly),
@@ -2563,7 +2587,10 @@ The patterns are similar but substantially attenuated when considering Wave 2 di
 ```{r}
 #| label: results-events-perception
 
-w1 <- ggcoef_compare(list("P3" = lp_w1_m3, "E4" = le_w1_m4),
+w1 <- ggcoef_compare(list(
+                        "P3 (Perceived Impact + Demographics + SES + Social Support" = lp_w1_m3,
+                        "E4 (+ Adverse Events)" = le_w1_m4
+                        ),
                intercept = FALSE,
                add_reference_rows = TRUE,
                include = c(covid_impact_mh_neg),
@@ -2571,7 +2598,10 @@ w1 <- ggcoef_compare(list("P3" = lp_w1_m3, "E4" = le_w1_m4),
                facet_labeller = label_wrap_gen(20),
                return_data = TRUE
                )
-w2 <- ggcoef_compare(list("P3" = lp_w2_m3, "E4" = le_w2_m4),
+w2 <- ggcoef_compare(list(
+                        "P3 (Perceived Impact + Demographics + SES + Social Support" = lp_w2_m3,
+                        "E4 (+ Adverse Events)" = le_w2_m4
+                        ),
                intercept = FALSE,
                add_reference_rows = TRUE,
                include = c(covid_impact_mh_neg),
@@ -2579,7 +2609,10 @@ w2 <- ggcoef_compare(list("P3" = lp_w2_m3, "E4" = le_w2_m4),
                facet_labeller = label_wrap_gen(20),
                return_data = TRUE
                )
-d <- ggcoef_compare(list("P3" = lp_d_m3, "E4" = le_d_m4),
+d <- ggcoef_compare(list(
+                        "P3 (Perceived Impact + Demographics + SES + Social Support" = lp_d_m3,
+                        "E4 (+ Adverse Events)" = le_d_m4
+                        ),
                intercept = FALSE,
                add_reference_rows = TRUE,
                include = c(covid_impact_mh_neg),
@@ -2588,11 +2621,11 @@ d <- ggcoef_compare(list("P3" = lp_d_m3, "E4" = le_d_m4),
                return_data = TRUE
                )
 ggcoef_plot(rbind(w1, w2, d),
-  colour = "model", 
+  colour = "model",
   errorbar_coloured = TRUE,
   dodged = TRUE) +
   labs(x = "Differences in wellbeing")
-            
+
 ```
 
 **Notes:** Reporting coefficients from underlying regression models reported in @tbl-results-percep-w1, @tbl-results-percep-w2, and @tbl-results-percep-diff, and @tbl-results-events-w1, @tbl-results-events-w2, and @tbl-results-events-diff.
