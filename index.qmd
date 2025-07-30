@@ -1955,7 +1955,7 @@ merged |>
                 event_index_poly,
                 after_stat = oob_censor(x, c(NA, quantiles[1]))
             ),
-            fill = "Low"
+            fill = "Fewer Adverse Events Tertile Group"
         ),
         stat = "density"
     ) +
@@ -1965,7 +1965,7 @@ merged |>
                 event_index_poly,
                 after_stat = oob_censor(x, c(quantiles[1], quantiles[2]))
             ),
-            fill = "Medium"
+            fill = "Average Adverse Events Tertile Group"
         ),
         stat = "density"
     ) +
@@ -1975,7 +1975,7 @@ merged |>
                 event_index_poly,
                 after_stat = oob_censor(x, c(quantiles[2], NA))
             ),
-            fill = "High"
+            fill = "More Adverse Events Tertile Group"
         ),
         stat = "density"
     ) +
@@ -1999,7 +1999,7 @@ Distribution of Adverse Events Index, colour-coded by tertile group
 
 :::
 
-The first principal component explains `{r} round(event_pcor_pca$Vaccounted[2,1], digits=2)*100`% of the variance. We standardise this index (mean 0; standard deviation 1) in our analysis sample, plot the distribution in @fig-events-index, and split it into three groups based on the tertiles of the index (accounting for sample weighting). We label these groups as "Low", "Medium" and "High" to reflect the relative impact of adverse events experienced in each.
+The first principal component explains `{r} round(event_pcor_pca$Vaccounted[2,1], digits=2)*100`% of the variance. We standardise this index (mean 0; standard deviation 1) in our analysis sample, plot the distribution in @fig-events-index, and split it into three groups based on the tertiles of the index (accounting for sample weighting). We label these groups as "Fewer Adverse Events Tertile Group", "Average Adverse Events Tertile Group" and "More Adverse Events Tertile Group" to reflect the relative impact of adverse events experienced in each.
 ```{r}
 #| label: data-create-qevents-groups
 
@@ -2014,11 +2014,20 @@ create_qevent_groups <- function(data) {
 
     var_label(
         newdata$variables$qevent_index_poly
-    ) <- "Adverse Event Tercile Groups"
+    ) <- "Adverse Event Tertile Groups"
     val_labels(newdata$variables$qevent_index_poly) <- NULL
-    val_label(newdata$variables$qevent_index_poly, 1) <- "Low"
-    val_label(newdata$variables$qevent_index_poly, 2) <- "Medium"
-    val_label(newdata$variables$qevent_index_poly, 3) <- "High"
+    val_label(
+        newdata$variables$qevent_index_poly,
+        1
+    ) <- "Fewer Adverse Events Tertile Group"
+    val_label(
+        newdata$variables$qevent_index_poly,
+        2
+    ) <- "Average Adverse Events Tertile Group"
+    val_label(
+        newdata$variables$qevent_index_poly,
+        3
+    ) <- "More Adverse Events Tertile Group"
     newdata$variables$qevent_index_poly <- to_factor(
         newdata$variables$qevent_index_poly
     )
@@ -2031,11 +2040,20 @@ create_qevent_groups <- function(data) {
 
     var_label(
         newdata$variables$w1_qevent_index_poly
-    ) <- "Adverse Event Tercile Groups (Wave 1 only)"
+    ) <- "Adverse Event Tertile Groups (Wave 1 only)"
     val_labels(newdata$variables$w1_qevent_index_poly) <- NULL
-    val_label(newdata$variables$w1_qevent_index_poly, 1) <- "Low"
-    val_label(newdata$variables$w1_qevent_index_poly, 2) <- "Medium"
-    val_label(newdata$variables$w1_qevent_index_poly, 3) <- "High"
+    val_label(
+        newdata$variables$w1_qevent_index_poly,
+        1
+    ) <- "Fewer Adverse Events Tertile Group"
+    val_label(
+        newdata$variables$w1_qevent_index_poly,
+        2
+    ) <- "Average Adverse Events Tertile Group"
+    val_label(
+        newdata$variables$w1_qevent_index_poly,
+        3
+    ) <- "More Adverse Events Tertile Group"
     newdata$variables$w1_qevent_index_poly <- to_factor(
         newdata$variables$w1_qevent_index_poly
     )
@@ -2093,7 +2111,7 @@ tbl_events_index_events |>
     ))
 ```
 
-We report the prevalence of each of the adverse life events by the three groups in @tbl-events. This demonstrates that these groups are capturing different levels of exposure to adverse life events, while reflecting the differential prevalence of the events. Students in the "Low" group are unlikely to have experienced any of the events, with the exception of a close family member dying. In contrast, students in the "High" group are likely to have experienced multiple events.
+We report the prevalence of each of the adverse life events by the three groups in @tbl-events. This demonstrates that these groups are capturing different levels of exposure to adverse life events, while reflecting the differential prevalence of the events. Students in the "Fewer Adverse Events Tertile Group" are unlikely to have experienced any of the events, with the exception of a close family member dying. In contrast, students in the "More Adverse Events Tertile Group" are likely to have experienced multiple events.
 ```{r}
 #| label: tbl-events-lifesat
 #| tbl-cap: Mean subjective wellbeing score by experience of adverse life events reported since onset of pandemic
@@ -2131,7 +2149,7 @@ tbl_events_lifesat |>
     ))
 ```
 
-We find that mean wellbeing score differs by experience of such events (@tbl-events-lifesat). Wellbeing is lower for those who experience a higher prevalence of adverse life events, ranging from `{r} inline_text(tbl_events_lifesat, variable = W1_ZLifeSat, column = "stat_1")` for those with low experience of adverse life events to `{r} inline_text(tbl_events_lifesat, variable = W1_ZLifeSat, column = "stat_3")` for those with a high level of experience. This pattern is consistent across Waves 1 and 2, but there is no significant evidence of difference in the patterns of change over time. 
+We find that mean wellbeing score differs by experience of such events (@tbl-events-lifesat). Wellbeing is lower for those who experience a higher prevalence of adverse life events, ranging from `{r} inline_text(tbl_events_lifesat, variable = W1_ZLifeSat, column = "stat_1")` for those in the fewer adverse life events tertile group to `{r} inline_text(tbl_events_lifesat, variable = W1_ZLifeSat, column = "stat_3")` for those in the more adverse life events tertile group. This pattern is consistent across Waves 1 and 2, but there is no significant evidence of difference in the patterns of change over time. 
 
 However, as with all our descriptive analyses, we are mindful that there is the potential for differences in socioeconomic and demographic characteristics between by experience of adverse life events. For this reason, as well as for our other analyses, we use regression modelling to unpack these findings further.
 
@@ -2652,7 +2670,7 @@ $$
 LifeSat_{it} = \beta_0 + \beta'_{1} TAdverseEventIndex_{i} + X'_{i} + \varepsilon_{it}
 $$ {#eq-regression-lifeevents}
 
-where definitions are per @eq-regression-lifesat, and $TAdverseEventIndex$ is a vector of binary variables indicating person $i$'s location in the distribution of the adverse life event index (high and medium, leaving low as a baseline). We, again, estimate separate models for each time point, as well as for Wave 2 adjusting for Wave 1. When modelling Wave 1 wellbeing, a variant of our events index is used based on Wave 1 event reports only.
+where definitions are per @eq-regression-lifesat, and $TAdverseEventIndex$ is a vector of binary variables indicating person $i$'s location in the distribution of the adverse life event index (more and average, leaving fewer as a baseline). We, again, estimate separate models for each time point, as well as for Wave 2 adjusting for Wave 1. When modelling Wave 1 wellbeing, a variant of our events index is used based on Wave 1 event reports only.
 
 :::{#tbl-regression-lifeevents-lookup}
 
@@ -2670,11 +2688,11 @@ Model specifications for regression analysis of subjective wellbeing by life eve
 
 :::
 
-Our models are summarised in @tbl-regression-lifeevents-lookup, with the first model (E1) again replicating our descriptive findings by including only the tercile groups of the adverse life events index, meaning the coefficients on each level of $TAdverseEventIndex$ report the difference between those who experience medium and high levels of adverse events, as applicable, compared to the low adverse life events group. In preliminary work to inform our approach, we explored alternative ways of including information on adverse life events in our modelling, including using the index as a continuous variable and including a set of binary variables for the individual adverse life events, as listed in @sec-data. We found that including tercile groups provided the most interpretable results without substantively affecting model fit.
+Our models are summarised in @tbl-regression-lifeevents-lookup, with the first model (E1) again replicating our descriptive findings by including only the tertile groups of the adverse life events index, meaning the coefficients on each level of $TAdverseEventIndex$ report the difference between those in the more and average adverse life events tertile groups, as applicable, compared to the fewer adverse life events tertile group. In preliminary work to inform our approach, we explored alternative ways of including information on adverse life events in our modelling, including using the index as a continuous variable and including a set of binary variables for the individual adverse life events, as listed in @sec-data. We found that including tertile groups provided the most interpretable results without substantively affecting model fit.
 
 Next, in E2, we add demographic characteristics (gender, ethnicity) and socioeconomic status (parental education, housing tenure, and area-level deprivation). We also include month of survey at this point. This model thus estimates the difference in wellbeing associated with greater experiences of adverse life events during the pandemic among those with similar socio-demographic characteristics, as well how much differential distribution of such events across socio-demographic groups explains wellbeing differences.
 
-We then explore how much differences in wellbeing associated with adverse life events are explained by social support. In E3, we add covariates for our social provisions scores and compare the estimate on our focal variable between models E2 and E3. This is very similar to model L6, but with adverse life events as our focus so these are entered using the tercile groups to aid interpretation.
+We then explore how much differences in wellbeing associated with adverse life events are explained by social support. In E3, we add covariates for our social provisions scores and compare the estimate on our focal variable between models E2 and E3. This is very similar to model L6, but with adverse life events as our focus so these are entered using the tertile groups to aid interpretation.
 
 Next, we include the covariate for perceived ongoing impact of the pandemic that was the focal variable of the previous section. As we hypothesise that at least some of the formation of ongoing perceptions of negative impact from the pandemic, this model (E4) is likely not a reliable guide to the association between adverse events and wellbeing since including the perception variable is over-controlling. However, the model is useful in comparison with P3 in demonstrating how much of the difference in wellbeing associated with a negative perception of the ongoing impact of the pandemic on wellbeing is explained by experience of adverse life events.
 
@@ -3872,9 +3890,9 @@ Differences in wellbeing by experience of adverse life events
 
 :::
 
-Those who experienced more adverse life events during the pandemic report substantially lower wellbeing, with the unconditional difference between low and high prevalence groups being `{r} abs(as.numeric(inline_text(results_events_w1, variable = qevent_index_poly, level = "High", column = "estimate_1")))` points at Wave 1 and `{r} abs(as.numeric(inline_text(results_events_w2, variable = qevent_index_poly, level = "High", column = "estimate_1")))` points at Wave 2. A small part of this is explained by demographics (in E2), while more is explained by social support (in E3), especially for those who experienced the most adverse life events (i.e., the High tercile group), bringing the gap between low and high groups to `{r} abs(as.numeric(inline_text(results_events_w1, variable = qevent_index_poly, level = "High", column = "estimate_3")))` points at Wave 1 and `{r} abs(as.numeric(inline_text(results_events_w2, variable = qevent_index_poly, level = "High", column = "estimate_3")))` points at Wave 2.
+Those who experienced more adverse life events during the pandemic report substantially lower wellbeing, with the unconditional difference between the "fewer" and "more" adverse life events tertile groups being `{r} abs(as.numeric(inline_text(results_events_w1, variable = qevent_index_poly, level = "More Adverse Life Events Tertile Group", column = "estimate_1")))` points at Wave 1 and `{r} abs(as.numeric(inline_text(results_events_w2, variable = qevent_index_poly, level = "More Adverse Life Events Tertile Group", column = "estimate_1")))` points at Wave 2. A small part of this is explained by demographics (in E2), while more is explained by social support (in E3), especially for those who experienced the most adverse life events (i.e., the More Adverse Life Events tertile group), bringing the gap between low and high groups to `{r} abs(as.numeric(inline_text(results_events_w1, variable = qevent_index_poly, level = "More Adverse Life Events Tertile Group", column = "estimate_3")))` points at Wave 1 and `{r} abs(as.numeric(inline_text(results_events_w2, variable = qevent_index_poly, level = "More Adverse Life Events Tertile Group", column = "estimate_3")))` points at Wave 2.
 
-The patterns are similar but substantially attenuated when considering Wave 2 differences controlling for Wave 1 wellbeing. Nevertheless, there remains a substantial difference (`{r} abs(as.numeric(inline_text(results_events_d, variable = qevent_index_poly, level = "High", column = "estimate_3")))` points) in wellbeing at Wave 2 by adverse events experienced after controlling for Wave 1 wellbeing, demographic characteristics and social support.
+The patterns are similar but substantially attenuated when considering Wave 2 differences controlling for Wave 1 wellbeing. Nevertheless, there remains a substantial difference (`{r} abs(as.numeric(inline_text(results_events_d, variable = qevent_index_poly, level = "More Adverse Life Events Tertile Group", column = "estimate_3")))` points) in wellbeing at Wave 2 by adverse events experienced after controlling for Wave 1 wellbeing, demographic characteristics and social support.
 
 :::{#fig-results-events-perception}
 
@@ -4621,7 +4639,7 @@ merged_mi <- lapply(1:imp$m, function(i) {
     )
     var_label(
         merged_mi[[i]]$qevent_index_poly
-    ) <- "Adverse Event Tercile Groups"
+    ) <- "Adverse Event Tertile Groups"
     val_labels(merged_mi[[i]]$qevent_index_poly) <- NULL
     val_label(merged_mi[[i]]$qevent_index_poly, 1) <- "Low"
     val_label(merged_mi[[i]]$qevent_index_poly, 2) <- "Medium"
