@@ -1,6 +1,6 @@
 ---
 title: "Young people’s subjective wellbeing in the wake of the COVID-19 pandemic: evidence from a representative cohort study in England"
-date: "2025/07/31"
+date: "2025/08/07"
 author:
   - name: Jake Anders
     affiliation: UCL Centre for Education Policy & Equalising Opportunities
@@ -67,21 +67,22 @@ The COVID-19 pandemic and the disruption it caused had substantial short-term ef
 
 Existing analyses suggest that effects of the disruption were unequal, often exacerbating existing demographic inequalities in society, including those associated with socioeconomic status [e.g., @Ravens-Sieberer2022], gender [e.g., @Anders2023; @Davillas2021a], and ethnicity [e.g., @Proto2021]. @Wolf2024 finds that older adolescents were particularly affected, perhaps as these are such formative years for social relationships and critical years for education and subsequent transitions.
 
-Variation in experiences and support during the pandemic has also been found to be important for young people's wellbeing. Restrictions on social activities and the closure of schools reduced physical activity for some, which has been linked to worse mental health outcomes [@Samji2022]; other aspects of the pandemic are likely to have exacerbated the prevalence of adverse life events that previous studies have shown affect wellbeing [@Cleland2016]. Conversely, social support has been identified as a potential buffer to negative impacts [@Demaray2005, @Racine2021, @Siedlecki2014] of such negative stressors. These highlight the potential importance of experiences and social support during the pandemic for young people's wellbeing and, hence, the need to consider these in understanding differences in wellbeing.
+Variation in experiences and support during the pandemic has also been found to be important for young people's wellbeing. Restrictions on social activities and the closure of schools reduced physical activity for some, which has been linked to worse mental health outcomes [@Samji2022]; other aspects of the pandemic are likely to have exacerbated the prevalence of adverse life events that previous studies have shown affect wellbeing [@Cleland2016]. Conversely, social support has been identified as a potential buffer to negative impacts [@Demaray2005; @Racine2021; @Siedlecki2014] of such negative stressors. These highlight the potential importance of experiences and social support during the pandemic for young people's wellbeing and, hence, the need to consider these in understanding differences in wellbeing.
 
 While short-term impacts are important, we should be especially concerned if the impacts of the pandemic have continued to affect young people's lives, including their subjective wellbeing, once restrictions ended. Concern was expressed from early in the pandemic that its negative effects on wellbeing would persist [@Sonuga-Barke2021], something that has been identified in some [@Quintana-Domeque2022] but not all [@Henseke2025] studies of the general population. We explore the extent to which young people's own perceptions of the ongoing impact of the pandemic on their wellbeing are associated with their post-pandemic subjective wellbeing, following in the spirit of research that seeks to understand the informational value of individuals' own asssessments of their situation [e.g. @Fernandez-Urbano2024 on perceived coping with the context of the pandemic].
 
-Moreover, we should care about inequalities in young people's wellbeing whether or not these are (entirely) due to the pandemic. Indeed, we may be more concerned about the persistence of inequalities that pre-date the pandemic — including in gender [@Yoon2023] and socioeconomic status [@Verhulst2020] — for which there is no particular reason to expect them to subside. As such, taking stock of the current situation is important in its own right given correlation between subjective wellbeing and later economic and wider outcomes [@Deaton2008a, @Lyubomirsky2005].
+Moreover, we should care about inequalities in young people's wellbeing whether or not these are (entirely) due to the pandemic. Indeed, we may be more concerned about the persistence of inequalities that pre-date the pandemic — including in gender [@Yoon2023] and socioeconomic status [@Verhulst2020] — for which there is no particular reason to expect them to subside. As such, taking stock of the current situation is important in its own right given correlation between subjective wellbeing and later economic and wider outcomes [@Deaton2008a; @Lyubomirsky2005].
 
 In our analyses of these issues, we are guided by Social Production Function (SPF) theory [@Ormel1999], which enumerates five components contributing to subjective well-being: stimulation, comfort, status, behavioural confirmation, and affection. While this study does not engage individually with all five factors, SPF nevertheless provides a helpful framework, including in distinguishing between long-term factors such as status, linked with socioeconomic and demographic characteristics, and more acute potential impacts of changes to stimulation, comfort and affection presented by the disruption of the pandemic and specific events during its course. Furthermore, the potential buffering role of social support can be seen as integral to the SPF components of status and affection. Focussing particularly on the context of the COVID-19 pandemic, @Chesters2025 posit that its restrictions may have negatively affected young people's access to affection, when not able to spend time with friends and extended family; stimulation, due to restrictions on activities; comfort, both material through potential financial distress, and emotional through adverse life events; and behavioural confirmation, through the disruption to routines and societal expectations.
 
 Using data from the COVID Social Mobility & Opportunities study (COSMO) — a representative cohort study of over 13,000 young people in England aged 14-15 at pandemic onset whose education and post-16 transitions were acutely affected by the pandemic's disruption through their remaining education and subsequent transitions — we provide new evidence regarding these issues, specifically through the following research aims:
 
 1. to estimate differences in post-pandemic wellbeing among this cohort by demographic characteristics;
-2. to validate and quantify the informational value of young people’s own perceptions of the impact of the pandemic on their wellbeing, along with the extent to which this may be explained by differences in social support and; 
+2. to validate and quantify the informational value of young people’s own perceptions of the impact of the pandemic on their wellbeing, along with the extent to which this may be explained by differences in social support and;
 3. to explore the role of adverse experiences during the pandemic in explaining differences in post-pandemic wellbeing, again accounting for the potential importance of differences in social support.
 
-The paper proceeds as follows. In @sec-data, we describe the data that we use in more detail, the steps we take to prepare it for analysis, and conduct descriptive analyses and visualisation to provide initial evidence on our research aims. In @sec-regression, we describe our use of regression modelling to support our analyses, before presenting results of this modelling in @sec-results. Finally, we discuss our findings and conclude in @sec-discussion, noting implications for policy and practice.
+The paper proceeds as follows. In @sec-data, we describe the data that we use, the steps taken to prepare it for analysis, and conduct descriptive analyses to provide initial evidence on our research aims. In @sec-regression, we describe our use of regression modelling, presenting results in @sec-results. Finally, we discuss our findings and conclude in @sec-discussion, noting implications for policy and practice.
+
 ```{r}
 #| label: packages
 #| output: off
@@ -219,7 +220,8 @@ registerS3method(
 
 ## Data and descriptive analyses {#sec-data}
 
-We use data from members of the COVID Social Mobility & Opportunities study (COSMO), a longitudinal cohort study following a representative sample of young people (and their parents) who were in Year 10 (i.e., aged 14-15) at pandemic onset (March 2020), who participated at both waves 1 [@Anders2024a], which was carried out between October 2021 and March 2022 (while participants were aged 16-17), and 2 [@Anders2024], which was carried out between October 2022 and March 2023 (while participants were aged 17-18). In both cases the majority of interviews were carried out within the first two months of fieldwork; we also control for month of interview in our regression models (further details below).
+We use data from the COVID Social Mobility & Opportunities study (COSMO), a longitudinal cohort study following a representative sample of young people (and their parents) who were in Year 10 (i.e., aged 14-15) at pandemic onset (March 2020), who participated at both waves 1 [@Anders2024a], carried out October 2021--March 2022 (ages 16-17), and 2 [@Anders2024], carried out October 2022--March 2023 (ages 17-18). In both cases the majority of interviews were carried out within the first two months of fieldwork; we also control for month of interview in our regression models (further details below).
+
 ```{r}
 #| label: data-import
 if (
@@ -287,7 +289,8 @@ merged <- merge(
 rm(w1yp, w1mp, w2yp, w2mp, w1, w2)
 ```
 
-COSMO has a clustered and stratified design with oversampling of those from smaller (e.g., ethnic minorities), more disadvantaged and harder to reach demographic groups to improve statistical power when exploring inequalities between such groups. Furthermore, there was initial non-response and attrition between the first two waves. As such, it is important to account for the deliberate and modelled disproportionalities in the sample, as well as implications of the clustering and stratification for statistical inference. We take these features into account in all our analyses using R's survey package [@R-survey] with the study-provided clustering and stratification variables, and design and non-response weights [@Adali2022; @Adali2023].
+COSMO has a clustered and stratified design with oversampling of those from smaller (e.g., ethnic minorities), more disadvantaged and harder to reach demographic groups to improve statistical power when exploring inequalities between such groups. Furthermore, there was initial non-response and attrition between the first two waves. As such, it is important to account for the deliberate and modelled sample disproportionalities, as well as implications of clustering and stratification for statistical inference. We take these features into account in analyses using study-provided clustering and stratification variables, and design and non-response weights [@Adali2022; @Adali2023].
+
 ```{r}
 #| label: data-survey
 create_survey_design <- function(data) {
@@ -302,7 +305,8 @@ create_survey_design <- function(data) {
 }
 ```
 
-To ensure consistency across analyses, we restrict our sample to those with valid data on the key variables for in our analyses. This includes the primary outcome variable of self-reported wellbeing score, as well as the key predictors and demographic variables that we use. However, we are mindful of the potential implications of sample selection caused by complete case analysis, so we robustness check our results to ensure this is not driving our results in @sec-appendix-mi, re-running our core analyses having only restricted the sample based on the primary outcome (wellbeing score) and the main predictors (impact of pandemic on mental health and adverse life events reporting) and multiply imputed across 10 datasets all other predictors using a highly flexible classification and regression tree approach [@R-mice; @R-mitools]. 
+To ensure consistency across analyses, we restrict our sample to those with valid data on the key variables for our analyses. This includes the primary outcome of self-reported wellbeing score, along with key predictors and demographic variables. However, we are mindful of the potential implications of sample selection caused by complete case analysis. We robustness check our findings in @sec-appendix-mi, re-running our core analyses having only restricted the sample based on the primary outcome (wellbeing score) and the main predictors (impact of pandemic on mental health and adverse life events reporting) and multiply imputing across 10 datasets all other predictors using a highly flexible classification and regression tree approach [@R-mice; @R-mitools].
+
 ```{r}
 #| label: data-sample
 restrict_sample <- function(data) {
@@ -364,6 +368,7 @@ restrict_sample <- function(data) {
 To measure self-reported wellbeing, we use the UK Office for National Statistics' official measure of life satisfaction [@OfficeforNationalStatistics2018], which is widely recognised as an important dimension of subjective wellbeing [@Petersen2022]. This asks participants to respond to the prompt “Overall, how satisfied are you with your life nowadays?” on a scale ranging from 0 “Not at all satisfied” to 10 “Completely satisfied”. This measure has been used in national UK surveys since 2011 and increasing numbers of academic studies, hence providing a useful benchmark for this concept in UK-based surveys. This measure is found to be a reliable measure of subjective wellbeing in young people [@Levin2014], performing as well as the more in-depth Satisfaction with Life Scale [@Jovanovic2016], for example, although we do recognise that it will not capture all dimensions of wellbeing [@Ruggeri2020]. It is also worth noting that, while they are distinct constructs, a clear correlation between lower wellbeing and increased risk of poor mental health [@Lombardo2018].
 
 As COSMO was established in response to the pandemic, there are no pre-pandemic baseline measures. As such, we emphasise that our estimates of differences are between individuals all of whom have experienced the pandemic, but experienced it differently, rather than between their current situation and a counterfactual in which the pandemic did not happen. Others have used used survey experiment methods to attempt to get closer to such a counterfactual [@Andreoli2024], or pre-existing longitudinal studies to explore change in mental health across the pandemic period [@Henseke2025].
+
 ```{r}
 #| label: data-recode-lifesat
 merged[, W1_ZLifeSat := as.numeric(W1_ZLifeSat)]
@@ -562,6 +567,7 @@ var_label(merged$W2_ZGHQ) <- "Wave 1 GHQ-12 (higher scores worse)"
 We have measures of wellbeing from two post-pandemic waves and use these to explore evidence of change in wellbeing between the two waves both overall, and between sub-groups of the data where this might be expected. We plot the overall distribution of reported wellbeing in both Waves 1 (age 16/17) and 2 (age 17/18) in @fig-distribution-lifesat.
 
 ::: {#fig-distribution-lifesat}
+
 ```{r}
 #| label: data-distribution-lifesat
 ZLifeSat_cov <- cbind(
@@ -659,19 +665,20 @@ Young people report a mean wellbeing score of `{r} w1_lifesat_mean` in Wave 1 an
 
 One interpretation would be that, as we know there was a decline in mental health and wellbeing among young people at the onset of the pandemic and its restrictions [@Newlove-Delgado2021], we would hope to see an upward trajectory in wellbeing in subsequent years to be confident of a 'bounce back', with this lack of change suggesting a plateau at a lower level than before the pandemic. That could be the case. A finding of minimal change is consistent with the findings of @Henseke2022 (albeit for a wider age range of young people aged 16-29). Similarly, the UK Office For National Statistics' annual population survey also suggests that life satisfaction has not returned to pre-pandemic levels in the general population [@OfficeforNationalStatistics2023b].
 
-Fundamentally, using these data alone we are unable to adjudicate between multiple potential plausible scenarios. Others, using a wider range of datasets are better placed to do so. For example, @Henseke2025 suggest that young people's wellbeing may have already returned to pre-pandemic levels, thus explaining a lack of trend for this reason. These findings would also be consistent with an upward post-pandemic trend being cancelled out by a countervailing age effect (for example) that would be expected based on the wider literature on wellbeing across the life course [@Blanchflower2021].
+Fundamentally, using these data alone we are unable to adjudicate between multiple potential plausible scenarios. Others, using a wider range of datasets are better placed to do so. For example, @Henseke2025 suggest that young people's wellbeing may have already returned to pre-pandemic levels, thus explaining a lack of trend for this reason. These findings would also be consistent with an upward post-pandemic trend being cancelled out by a countervailing age effect (for example) implied by the wider literature on life course wellbeing [@Blanchflower2021].
 
-However, this is not the focus of our paper. Aggregate stability at the cohort level does not mean that there are not individual-level differences or differential change in reported wellbeing. The correlation between the reported measures in Waves 1 and 2 is `{r} round(ZLifeSat_cov$cor[1,2], digits=2)`. While some of this likely reflects natural fluctuation in young people's wellbeing due to daily idiosyncratic shocks, it provides a basis to explore evidence of systematic difference in change between the two waves, along with the differences in levels at each wave.
+However, this is not our paper's focus. Aggregate stability does not mean that there are not individual-level differences or differential change in wellbeing. The correlation between the reported measures in Waves 1 and 2 is `{r} round(ZLifeSat_cov$cor[1,2], digits=2)`. While some of this likely reflects natural fluctuation in young people's wellbeing due to daily idiosyncratic shocks, it provides a basis to explore evidence of systematic difference in change between the two waves, along with the differences in levels at each wave.
 
 ### Social support
 
-Social support is concerned with the extent to which an individual is, or perceives they are, "cared for, esteemed, and valued by people in [their] social network" [p. 691, @Demaray2005]. As such, it directly relates to the SPF framework, specifically status and affection. As such, we anticipate that individuals with greater social support will have higher levels of wellbeing [@Li2021, @Magson2021, @Siedlecki2014]. Furthermore, because of the potential for substitution between components of the SPF in the production of wellbeing [@Ormel1999], we also anticipate social support buffering shocks to other aspects; this has been observed empirically with social support buffering shocks to wellbeing in the face of adversity [@Aksoy2024, @Kearns2015, @McMahon2023].
+Social support is concerned with the extent to which an individual is, or perceives they are, "cared for, esteemed, and valued by people in [their] social network" [p. 691, @Demaray2005]. As such, it directly relates to the SPF framework, specifically status and affection. As such, we anticipate that individuals with greater social support will have higher levels of wellbeing [@Li2021; @Magson2021; @Siedlecki2014]. Furthermore, because of the potential for substitution between components of the SPF in the production of wellbeing [@Ormel1999], we also anticipate social support buffering shocks to other aspects; this has been observed empirically with social support buffering shocks to wellbeing in the face of adversity [@Aksoy2024; @Kearns2015; @McMahon2023].
 
 To capture this factor, we use the social provisions scale [@Cutrona2018], specifically a shortened three-item variant available in COSMO in which young people are asked to respond (using the categories "Not true", "Partly true" or "Very true") to the statements:
 
 1. I have family and friends who help me feel safe, secure and happy
 2. There is someone I trust whom I would turn to for advice if I were having problems
 3. There is no one I feel close to [Negatively coded]
+
 ```{r}
 #| label: data-recode-psych
 suppressWarnings(val_labels(merged$sps_1) <- NULL)
@@ -732,6 +739,7 @@ standardise_psych <- function(survey_data) {
 ```
 
 ::: {#fig-psych-dist}
+
 ```{r}
 #| label: data-psych-dist
 
@@ -779,17 +787,18 @@ Distribution of social provisions scale
 
 :::
 
-Following standard practice, we sum over the values of the three items and standardise the resulting variable (mean zero; standard deviation one) for the purposes of interpretation. We plot the distribution of the social provisions scale in @fig-psych-dist. There is some evidence of a ceiling effect — most respondents score the maximum value of 6 — but with a decent spread below this. We use this as a continuous measure in our analyses.
+Following standard practice, we sum over the values of the three items and standardise the resulting variable (mean zero; standard deviation one) for the purposes of interpretation. We plot the distribution of the social provisions scale in @fig-psych-dist. There is some evidence of a ceiling effect — most respondents score the maximum of 6 — but with a decent spread below this. We use this as a continuous measure in our analyses.
 
 ### Demographic characteristics
 
-The impact of the pandemic on young people's wellbeing has differed depending upon their demographic characteristics [e.g., @Anders2023]. Both to estimate differences between young people based on these characteristics, and to control for these measures in other analyses, we make use of the rich set of demographic measures collected in COSMO. Specifically, we construct the following measures of demographic characteristics.
+The impact of the pandemic on young people's wellbeing differed depending upon their demographic characteristics [e.g., @Anders2023]. Both to estimate differences between young people based on these characteristics, and to control for these measures in other analyses, we make use of the rich set of demographic measures collected in COSMO. Specifically, we construct the following measures of demographic characteristics.
 
-* *Gender*: There are longstanding concerns about differences in wellbeing by gender, which have only been exacerbated by the pandemic [@Davillas2021a]. We construct a variable for this characterised based on young people's reports at either wave (where a subsequent report is given precedence if they differ), young people are grouped into 'female', 'male' and 'non-binary+', where the final category is a combination of those who explicitly report being non-binary or choose to identify in any other way (since these other groups are too small for analysis).
-* *Ethnicity*: There is evidence of a greater initial effect on young people's mental health if they are part of an ethnic minority [@Proto2021]. As with gender, our measure is based on self-reports at either wave (where a subsequent report is given precedence if they differ), young people are grouped into 'White', 'Mixed', 'Black', 'Asian' and 'Other'. While these categories are broad, they are chosen for consistency with the UK's major ethnic group classifications while avoiding groups that are too small for analysis purposes.
-* *Parental education*: Generally viewed as a core component of socioeconomic status, which may affect wellbeing through the status component of the SPF [@Ormel1999], we construct a measure of parental education based on the highest level of education reported by either parent at either wave (where a subsequent report is given precedence if they differ), grouping parents into 'Graduate', 'Below Graduate' and 'No Quals'.
-* *Housing tenure*: Housing tenure is another component of a family's socioeconomic status, hence with potential implications for young people's wellbeing. We construct a measure of housing tenure based on young people's reports at either wave (where a subsequent report is given precedence if they differ), grouping families into those who own their home (either with a mortgage or outright; 'Own House') and all others (which predominantly include social and private renting; 'Other').
+* *Gender*: There are longstanding concerns about differences in wellbeing by gender [@Yoon2023], which have only been exacerbated by the pandemic [@Davillas2021a]. We use young people's reported gender at either wave (giving precedence to the subsequent reports if they differ) and group cohort members into 'female', 'male' and 'non-binary+', where the final category is a combination of those who explicitly report being non-binary or choose to identify in any other way (since these other groups are too small for analysis).
+* *Ethnicity*: As with gender, our measure is based on self-reports at either wave (where a subsequent report is given precedence if they differ), young people are grouped into 'White', 'Mixed', 'Black', 'Asian' and 'Other'. While these categories are broad, they are chosen for consistency with the UK's major ethnic group classifications while avoiding groups that are too small for analysis purposes.
+* *Parental education*: Generally viewed as a core component of socioeconomic status, which may affect wellbeing through the status component of the SPF [@Ormel1999], we construct our measure using the highest level of education reported by either parent at either wave, grouping parents into 'Graduate', 'Below Graduate' and 'No Quals'.
+* *Housing tenure*: Housing tenure is another component of socioeconomic status, hence with potential implications for young people's wellbeing. Our measure is based on parental reports at either wave (giving precedence to the subsequent if they differ), grouping families into those who own their home (either with a mortgage or outright; 'Own House') and all others (predominantly social and private renting; 'Other').
 * *Area deprivation*: We also include an area-based measure of deprivation of participants' homes, both as a correlate of socioeconomic stats due to residential sorting and given more direct implications this can have for potentially wellbeing-enhancing amenities. COSMO provides decile groups of the UK's Income Deprivation Affecting Children Index (IDACI), constructed at the 'lower-layer super-output area' (the smallest geographical areas in UK statistical geography, containing an average population of 1,500).
+
 ```{r}
 #| label: data-recode-demos
 
@@ -1037,7 +1046,7 @@ rm(merged_pca, merged_pca_poly)
 
 ```
 
-To allow exploration of differences in wellbeing by socioeconomic status (SES) in a simple way, we create a combined index of SES (with mean 0 and standard deviation 0 in our analysis sample) across our measures of parental education, housing tenure and home neighbourhood deprivation. We describe how we do this and demonstrate that it captures the underlying SES measures on which it is based in @sec-appendix-ses.
+To allow exploration of differences in wellbeing by socioeconomic status (SES) in a simple way, we create a combined index of SES (with mean 0 and standard deviation 0 in our analysis sample) across our measures of parental education, housing tenure and home neighbourhood deprivation. We describe how we do this and demonstrate that it captures the underlying SES measures on which it is based in @sec-appendix-measures-ses.
 
 ```{r}
 #| label: data-standardise-ses-poly
@@ -1078,6 +1087,7 @@ create_qses_groups <- function(data) {
 ```
 
 Having constructed this set of measures, we report the prevalence of demographics in our cohort along with mean levels of self-reported wellbeing by these categories at Wave 1, Wave 2, and mean difference between the two in @tbl-demographics-lifesat.
+
 ```{r}
 #| label: tbl-demographics-lifesat
 #| tbl-cap: Mean subjective wellbeing score by demographic characteristics
@@ -1251,6 +1261,7 @@ Overall, this initial analysis highlights gender as the most important demograph
 ### Perceived ongoing impact
 
 Next, we seek to quantify differences in young people's wellbeing by their own perceptions of the ongoing impact of the pandemic. This takes seriously young people's own reports of the ongoing impact of the pandemic on their wellbeing. To capture these perceptions, we use a question asked to young people at the second wave of COSMO, asking "Would you say the pandemic is still having an effect on [your mental wellbeing], whether positive or negative?" If they agree with this question then they are subsequently asked to distinguish whether this impact is positive, negative or they don't know.
+
 ```{r}
 #| label: data-recode-covid_impact_mh
 
@@ -1374,20 +1385,8 @@ These groups are also distinguished by changes in reported wellbeing between Wav
 
 ### Adverse life events
 
-Finally, we explore whether subjective wellbeing is associated with adverse life events that occurred during the COVID-19 pandemic. In Wave 1, COSMO asked participants whether they had experienced each of the following life events since the onset of the pandemic in March 2020:
+Finally, we explore whether subjective wellbeing is associated with experiencing adverse life events during the COVID-19 pandemic. We report details of the construction of this measure in @sec-appendix-measures-adverse-events, creating a composite index of adverse life events using polychoric principal component analysis (PCA) of the ten adverse life events available in the data and dividing the sample into tertile groups based on the resulting index.
 
-1. A parent/guardian or carer lost their job or business
-2. My family could not afford to buy enough food, or had to use a food bank
-3. My family could not afford to pay their bills/rent/mortgage
-4. I was seriously ill in hospital
-5. A close family member or friend is or was seriously ill in hospital
-6. A close family member or friend died
-7. Increase in number of arguments with parents/guardians
-8. Increase in number of arguments between parents/guardians
-9. Moving to a new home
-10. Parents/guardians separated or divorced
-
-The question is worded to capture events whether or not they are directly attributable to the pandemic, its restrictions and disruptions, but it is reasonable to believe many were caused or exacerbated by the circumstances of the pandemic. Participants were then asked whether they had experienced these events over the past twelve months (i.e., for most participants a year since they responded to the Wave 1 survey) in Wave 2.
 ```{r}
 #| label: data-recode-lifeevents
 
@@ -1772,9 +1771,6 @@ var_label(merged$event_movehouse) <- "Moved home"
 var_label(merged$event_parentsseparated) <- "Parents separated"
 ```
 
-`{r} merged |> restrict_sample() |> create_survey_design() |> group_by(event_count_group) |> summarise(p = survey_prop(proportion = TRUE)) |> filter(event_count_group=="0") |> select(p) |> as.numeric() |> round(digits = 2)*100`% of pupils experience no events at all, while `{r} merged |> restrict_sample() |> create_survey_design() |> group_by(event_count_group) |> summarise(p = survey_prop(proportion = TRUE)) |> filter(event_count_group=="3+") |> select(p) |> as.numeric() |> round(digits = 2)*100`% experience three or more events. We report the proportion of young people experiencing each of the ten specific adverse life events in the first column of @tbl-events.
-
-The substantial differences in prevalence of the events means that using a simple count of events experienced would inappropriate impose the same importance, or severity, for all the events. Instead, we allow these to differ, such that lower probability/higher impact events are given more weight by creating a composite index of adverse life events using polychoric principal component analysis (PCA) of the ten adverse life events.
 ```{r}
 #| label: data-lifeevents-pca-poly
 #| output: false
@@ -1896,8 +1892,6 @@ standardise_event_index_poly <- function(survey_data) {
 }
 ```
 
-:::{#fig-events-index}
-
 ```{r}
 #| label: data-events-index
 
@@ -1936,7 +1930,7 @@ quantiles <- pctile(
 )
 rm(quantilesdf)
 
-merged |>
+events_index_dist <- merged |>
     restrict_sample() |>
     create_survey_design() |>
     standardise_event_index_poly() |>
@@ -1948,7 +1942,7 @@ merged |>
                 event_index_poly,
                 after_stat = oob_censor(x, c(NA, quantiles[1]))
             ),
-            fill = "Fewer Adverse Events Tertile Group"
+            fill = "Fewer"
         ),
         stat = "density"
     ) +
@@ -1958,7 +1952,7 @@ merged |>
                 event_index_poly,
                 after_stat = oob_censor(x, c(quantiles[1], quantiles[2]))
             ),
-            fill = "Average Adverse Events Tertile Group"
+            fill = "Average"
         ),
         stat = "density"
     ) +
@@ -1968,14 +1962,14 @@ merged |>
                 event_index_poly,
                 after_stat = oob_censor(x, c(quantiles[2], NA))
             ),
-            fill = "More Adverse Events Tertile Group"
+            fill = "More"
         ),
         stat = "density"
     ) +
     labs(
         x = "Adverse Life Events Index",
         y = "Proportion",
-        fill = "Adverse Event Groups"
+        fill = "Adverse Event Tertile Groups"
     ) +
     annotate(
         geom = "text",
@@ -1986,13 +1980,6 @@ merged |>
 
 ```
 
-**Notes:** Adverse events index based on polychoric principal component analysis of measured adverse life events. The index is standardised to have mean 0 and standard deviation 1 in the analysis sample. Weighted for survey design and non-response.
-
-Distribution of Adverse Events Index, colour-coded by tertile group
-
-:::
-
-The first principal component explains `{r} round(event_pcor_pca$Vaccounted[2,1], digits=2)*100`% of the variance. We standardise this index (mean 0; standard deviation 1) in our analysis sample, plot the distribution in @fig-events-index, and split it into three groups based on the tertiles of the index (accounting for sample weighting). We label these groups as "Fewer Adverse Events Tertile Group", "Average Adverse Events Tertile Group" and "More Adverse Events Tertile Group" to reflect the relative impact of adverse events experienced in each.
 ```{r}
 #| label: data-create-qevents-groups
 
@@ -2012,15 +1999,15 @@ create_qevent_groups <- function(data) {
     val_label(
         newdata$variables$qevent_index_poly,
         1
-    ) <- "Fewer Adverse Events Tertile Group"
+    ) <- "Fewer"
     val_label(
         newdata$variables$qevent_index_poly,
         2
-    ) <- "Average Adverse Events Tertile Group"
+    ) <- "Average"
     val_label(
         newdata$variables$qevent_index_poly,
         3
-    ) <- "More Adverse Events Tertile Group"
+    ) <- "More"
     newdata$variables$qevent_index_poly <- to_factor(
         newdata$variables$qevent_index_poly
     )
@@ -2038,15 +2025,15 @@ create_qevent_groups <- function(data) {
     val_label(
         newdata$variables$w1_qevent_index_poly,
         1
-    ) <- "Fewer Adverse Events Tertile Group"
+    ) <- "Fewer"
     val_label(
         newdata$variables$w1_qevent_index_poly,
         2
-    ) <- "Average Adverse Events Tertile Group"
+    ) <- "Average"
     val_label(
         newdata$variables$w1_qevent_index_poly,
         3
-    ) <- "More Adverse Events Tertile Group"
+    ) <- "More"
     newdata$variables$w1_qevent_index_poly <- to_factor(
         newdata$variables$w1_qevent_index_poly
     )
@@ -2057,8 +2044,7 @@ create_qevent_groups <- function(data) {
 ```
 
 ```{r}
-#| label: tbl-events
-#| tbl-cap: Adverse life events experienced by Adverse Events Index group
+#| label: events-index-events
 
 tbl_events_index_events <- merged |>
     restrict_sample() |>
@@ -2097,14 +2083,8 @@ tbl_events_index_events <- merged |>
         all_stat_cols() ~ "**{level}** ({round(p, digits=2)*100}%)"
     ) |> # update the column header
     bold_labels()
-tbl_events_index_events |>
-    as_gt() |>
-    tab_source_note(md(
-        "**Notes:** All estimates are weighted and account for the complex survey design."
-    ))
 ```
 
-We report the prevalence of each of the adverse life events by the three groups in @tbl-events. This demonstrates that these groups are capturing different levels of exposure to adverse life events, while reflecting the differential prevalence of the events. Students in the "Fewer Adverse Events Tertile Group" are unlikely to have experienced any of the events, with the exception of a close family member dying. In contrast, students in the "More Adverse Events Tertile Group" are likely to have experienced multiple events.
 ```{r}
 #| label: tbl-events-lifesat
 #| tbl-cap: Mean subjective wellbeing score by experience of adverse life events reported since onset of pandemic
@@ -2142,13 +2122,13 @@ tbl_events_lifesat |>
     ))
 ```
 
-We find that mean wellbeing score differs by experience of such events (@tbl-events-lifesat). Wellbeing is lower for those who experience a higher prevalence of adverse life events, ranging from `{r} inline_text(tbl_events_lifesat, variable = W1_ZLifeSat, column = "stat_1")` for those in the fewer adverse life events tertile group to `{r} inline_text(tbl_events_lifesat, variable = W1_ZLifeSat, column = "stat_3")` for those in the more adverse life events tertile group. This pattern is consistent across Waves 1 and 2, but there is no significant evidence of difference in the patterns of change over time. 
+We find that mean wellbeing score differs by experience of such events (@tbl-events-lifesat). Wellbeing is lower for those who experience a higher prevalence of adverse life events, ranging from `{r} inline_text(tbl_events_lifesat, variable = W1_ZLifeSat, column = "stat_1")` for those in the fewer adverse life events tertile group to `{r} inline_text(tbl_events_lifesat, variable = W1_ZLifeSat, column = "stat_3")` for those in the more adverse life events tertile group. This pattern is consistent across Waves 1 and 2, but there is no significant evidence of difference in the patterns of change over time.
 
 However, as with all our descriptive analyses, we are mindful that there is the potential for differences in socioeconomic and demographic characteristics between by experience of adverse life events. For this reason, as well as for our other analyses, we use regression modelling to unpack these findings further.
 
 ## Analytical approach {#sec-regression}
 
-To extend our descriptive analyses and, hence, provide a more nuanced understanding of the factors associated with young people's wellbeing since the pandemic, we use regression modelling. All analyses are carried out using the statistical software R [@R2024], with the survey package [@R-survey] used to account for the complex survey design of the data, including design and non-response weights, and adjustments to statistical inference due to stratification and clustering of the sample.
+To extend our descriptive analyses and, hence, provide a more nuanced understanding of the factors associated with young people's wellbeing since the pandemic, we use regression modelling. All analyses are carried out using R [@R2024], with the survey package [@R-survey] used to account for the complex survey design of the data, including design and non-response weights, and adjustments to statistical inference due to stratification and clustering of the sample.
 
 We break this section into three sub-sections, aligned with the research aims in this paper: demographic differences in subjective wellbeing; the importance of perceived ongoing impact of the pandemic; and the importance of adverse life events during the pandemic.
 
@@ -2178,15 +2158,13 @@ Model specifications for regression analysis of subjective wellbeing.
 
 :::
 
-We estimate a series of models summarised in @tbl-regression-lifesat-lookup, beginning with simple models including gender (L1), ethnicity (L2), and SES (L3) entered separately, replicating the descriptive analyses and unconditional estimates of differences in wellbeing reported in @tbl-demographics-lifesat. Next, we include all three demographic characteristics at the same time in L4, along with the addition of a month of interview variable to allow for potential confounding due to the timing of the survey. This model, hence, provides estimates of demographic differences in wellbeing, conditional on the other demographic characteristics included. 
-
-We then explore potential intersectional differences in wellbeing between demographics in L5 [@CodiroliMcmaster2019] by including a full set of interaction terms between our SES, gender and ethnicity variables.
+We estimate a series of models summarised in @tbl-regression-lifesat-lookup, beginning with simple models including gender (L1), ethnicity (L2), and SES (L3) entered separately, replicating the descriptive analyses and unconditional estimates of differences in wellbeing reported in @tbl-demographics-lifesat. Next, we include all three demographic characteristics at the same time in L4, along with the addition of a month of interview variable to allow for potential confounding due to the timing of the survey. This model, hence, provides estimates of demographic differences in wellbeing, conditional on the other demographic characteristics included. We then explore potential intersectional differences in wellbeing between demographics in L5 [@CodiroliMcmaster2019] by including a full set of interaction terms between our SES, gender and ethnicity variables.
 
 Next, motivated by understanding the potential importance of social support in explaining these differences, we add social provisions score in L6. Differences between the coefficients on our demographic characteristics between L4 and L6 will, hence, provide information on the extent to which differences in social support explain the unadjusted differences.
 
 L7 explores whether the importance of social support varies by demographic characteristics. As with L5, we include interaction terms, this time between our demographic characteristics and the two social support measures to allow for the moderation of the relationship between these measures and wellbeing.
 
-Finally, L8 explores the importance of adverse life events in explaining demographic differences in wellbeing. We include the adverse life events index in this model, along with the demographic characteristics and social support measures. Comparing coefficients on the demographic characteristics in L6 and L8 hence provides information on the extent to which differences in adverse life events may explain demographic differences in wellbeing. We do not run a model exploring the interaction between adverse life events and demographic characteristics at this point as we will explore this in a subsequent section.
+Finally, L8 explores the importance of adverse life events in explaining demographic differences in wellbeing. We include the adverse life events index in this model, along with the demographic characteristics and social support measures. Comparing coefficients on the demographic characteristics in L6 and L8 hence provides information on the extent to which differences in adverse life events may explain demographic differences in wellbeing. We do not model the interaction between adverse life events and demographic characteristics at this point as we explore this in a subsequent section.
 
 ```{r}
 #| label: regression-lifesat
@@ -2464,7 +2442,7 @@ Next, in P2, we include demographic (gender, ethnicity), methodological (month o
 
 We then explore the extent to which differences in wellbeing associated with a negative perceived impact of the pandemic are explained by social support. In P3, we add social provisions score and compare the estimate on our focal variable coefficient between models P2 and P3.
 
-Finally, in P4, we explore evidence of variation in the difference in wellbeing associated with a negative perceived impact of the pandemic by demographic and social support measures. We do this by including a full set of interaction terms between our focal variable and the socio-demographic and social support variables in P3. Examining the coefficients on these interaction terms will provide evidence on this point.
+Finally, in P4, we explore evidence of variation in the difference in wellbeing associated with a negative perceived impact of the pandemic by demographic and social support measures. We do this by including a full set of interaction terms between our focal variable and the socio-demographic and social support variables in P3.
 
 ```{r}
 #| label: regression-percept
@@ -2476,7 +2454,6 @@ regressiondata <- merged |>
     standardise_event_index_poly() |>
     create_qses_groups() |>
     create_qevent_groups()
-
 
 lp_w1_m1 <- svyglm(
     W1_ZLifeSat ~
@@ -2681,15 +2658,15 @@ Model specifications for regression analysis of subjective wellbeing by life eve
 
 :::
 
-Our models are summarised in @tbl-regression-lifeevents-lookup, with the first model (E1) again replicating our descriptive findings by including only the tertile groups of the adverse life events index, meaning the coefficients on each level of $TAdverseEventIndex$ report the difference between those in the more and average adverse life events tertile groups, as applicable, compared to the fewer adverse life events tertile group. In preliminary work to inform our approach, we explored alternative ways of including information on adverse life events in our modelling, including using the index as a continuous variable and including a set of binary variables for the individual adverse life events, as listed in @sec-data. We found that including tertile groups provided the most interpretable results without substantively affecting model fit.
+Our models are summarised in @tbl-regression-lifeevents-lookup, with the first model (E1) again replicating our descriptive findings by including only the tertile groups of the adverse life events index. In preliminary work, we explored alternative modelling approaches including using the index as a continuous variable or including the individual adverse life events, as listed in @sec-appendix-measures-adverse-events. Including tertile groups provided the most interpretable results without substantively affecting model fit.
 
-Next, in E2, we add demographic characteristics (gender, ethnicity) and socioeconomic status (parental education, housing tenure, and area-level deprivation). We also include month of survey at this point. This model thus estimates the difference in wellbeing associated with greater experiences of adverse life events during the pandemic among those with similar socio-demographic characteristics, as well how much differential distribution of such events across socio-demographic groups explains wellbeing differences.
+Next, in E2, we add demographic characteristics (gender, ethnicity), socioeconomic status (parental education, housing tenure, and area-level deprivation), and month of survey. This model thus estimates the difference in wellbeing associated with greater experiences of adverse life events during the pandemic among those with similar socio-demographic characteristics, as well how much distribution of events across socio-demographic groups explains wellbeing differences.
 
-We then explore how much differences in wellbeing associated with adverse life events are explained by social support. In E3, we add covariates for our social provisions scores and compare the estimate on our focal variable between models E2 and E3. This is very similar to model L6, but with adverse life events as our focus so these are entered using the tertile groups to aid interpretation.
+We then explore how much differences in wellbeing associated with adverse life events are explained by social support. In E3, we add social provisions score and compare the estimate on our focal variable between models E2 and E3. This is very similar to model L6, but with adverse life events as our focus so these are entered using the tertile groups to aid interpretation.
 
-Next, we include the covariate for perceived ongoing impact of the pandemic that was the focal variable of the previous section. As we hypothesise that at least some of the formation of ongoing perceptions of negative impact from the pandemic, this model (E4) is likely not a reliable guide to the association between adverse events and wellbeing since including the perception variable is over-controlling. However, the model is useful in comparison with P3 in demonstrating how much of the difference in wellbeing associated with a negative perception of the ongoing impact of the pandemic on wellbeing is explained by experience of adverse life events.
+Next, we include perceived ongoing impact of the pandemic (focal variable in the previous section). As we hypothesise that at least some of the formation of ongoing perceptions of negative impact from the pandemic is due to experience of adverse events, this model (E4) is not a reliable guide to the association between adverse events and wellbeing: including the perception variable is over-controlling. However, the model is useful in comparison with P3 in demonstrating how much of the difference in wellbeing associated with a negative perception of the ongoing impact of the pandemic on wellbeing is explained by experience of adverse life events.
 
-Finally, analogously to previous sections, we include interactions of our focal variables (experience of adverse life events) with our socio-demographic and social support measures in model E5. This allows us to see if there is evidence of variation in the importance of having experienced adverse life events for post-pandemic wellbeing between different groups of young people.
+Finally, analogously to previous sections, we include interactions of our focal variables (experience of adverse life events) with our socio-demographic and social support measures in model E5.
 
 ```{r}
 #| label: regression-lifeevents-lifesat
@@ -2926,7 +2903,7 @@ rm(regressiondata)
 
 ## Results {#sec-results}
 
-In this section, we report the results of the regression models outlined in the previous section, beginning with demographic differences in wellbeing [@sec-results-lifesat], then the importance of perceived ongoing impact of the pandemic [@sec-results-percep] and, finally, the importance of adverse life events during the pandemic [@sec-results-events]. We primarily report our results graphically [@R-ggstats], focussing attention on the estimates pertinent to addressing our research aims and allowing for easy comparison across models, supplemented with illustration of interactions between characteristics [@marginaleffects2024], where relevant. We provide full regression tables of the results for each model, which are included in @sec-appendix-regression for reference.
+In this section, we report results from the regression models outlined in the previous section, beginning with demographic differences in wellbeing [@sec-results-lifesat], then the importance of perceived ongoing impact of the pandemic [@sec-results-percep] and, finally, the importance of adverse life events during the pandemic [@sec-results-events]. We report our results graphically, focussing attention on the estimates pertinent to addressing our research aims and allowing for easy comparison across models. We provide full regression tables of the results for each model, which are included in @sec-appendix-regression for reference.
 
 ### Demographic differences in subjective wellbeing {#sec-results-lifesat}
 
@@ -3581,7 +3558,8 @@ ggcoef_plot(
     rbind(w1, w2, d),
     colour = "model",
     errorbar_coloured = TRUE,
-    dodged = TRUE
+    dodged = TRUE,
+    facet_labeller = label_wrap_gen(15)
 ) +
     labs(x = "Differences in wellbeing") +
     theme(
@@ -3904,9 +3882,9 @@ Differences in wellbeing by experience of adverse life events
 
 :::
 
-Those who experienced more adverse life events during the pandemic report substantially lower wellbeing, with the unconditional difference between the "fewer" and "more" adverse life events tertile groups being `{r} abs(as.numeric(inline_text(results_events_w1, variable = qevent_index_poly, level = "More Adverse Events Tertile Group", column = "estimate_1")))` points at Wave 1 and `{r} abs(as.numeric(inline_text(results_events_w2, variable = qevent_index_poly, level = "More Adverse Events Tertile Group", column = "estimate_1")))` points at Wave 2. A small part of this is explained by demographics (in E2), while more is explained by social support (in E3), especially for those who experienced the most adverse life events (i.e., the More Adverse Events Tertile Group), bringing the gap between low and high groups to `{r} abs(as.numeric(inline_text(results_events_w1, variable = qevent_index_poly, level = "More Adverse Events Tertile Group", column = "estimate_3")))` points at Wave 1 and `{r} abs(as.numeric(inline_text(results_events_w2, variable = qevent_index_poly, level = "More Adverse Events Tertile Group", column = "estimate_3")))` points at Wave 2.
+Those who experienced more adverse life events during the pandemic report substantially lower wellbeing, with the unconditional difference between the "fewer" and "more" adverse life events tertile groups being `{r} abs(as.numeric(inline_text(results_events_w1, variable = qevent_index_poly, level = "More", column = "estimate_1")))` points at Wave 1 and `{r} abs(as.numeric(inline_text(results_events_w2, variable = qevent_index_poly, level = "More", column = "estimate_1")))` points at Wave 2. A small part of this is explained by demographics (in E2), while more is explained by social support (in E3), especially for those who experienced the most adverse life events (i.e., the More Adverse Events Tertile Group), bringing the gap between low and high groups to `{r} abs(as.numeric(inline_text(results_events_w1, variable = qevent_index_poly, level = "More", column = "estimate_3")))` points at Wave 1 and `{r} abs(as.numeric(inline_text(results_events_w2, variable = qevent_index_poly, level = "More", column = "estimate_3")))` points at Wave 2.
 
-The patterns are similar but substantially attenuated when considering Wave 2 differences controlling for Wave 1 wellbeing. Nevertheless, there remains a substantial difference (`{r} abs(as.numeric(inline_text(results_events_d, variable = qevent_index_poly, level = "More Adverse Events Tertile Group", column = "estimate_3")))` points) in wellbeing at Wave 2 by adverse events experienced after controlling for Wave 1 wellbeing, demographic characteristics and social support.
+The patterns are similar but substantially attenuated when considering Wave 2 differences controlling for Wave 1 wellbeing. Nevertheless, there remains a substantial difference (`{r} abs(as.numeric(inline_text(results_events_d, variable = qevent_index_poly, level = "More", column = "estimate_3")))` points) in wellbeing at Wave 2 by adverse events experienced after controlling for Wave 1 wellbeing, demographic characteristics and social support.
 
 :::{#fig-results-events-perception}
 
@@ -3953,16 +3931,18 @@ ggcoef_plot(
     rbind(w1, w2, d),
     colour = "model",
     errorbar_coloured = TRUE,
-    dodged = TRUE
+    dodged = TRUE,
+    facet_labeller = label_wrap_gen(20)
 ) +
     labs(x = "Differences in wellbeing") +
+    scale_colour_discrete(labels = \(x) str_wrap(x, width = 25)) +
     theme(
         legend.position = "left"
     )
 
 ```
 
-**Notes:** Reporting coefficients from underlying regression models reported in @tbl-results-percep-w1, @tbl-results-percep-w2, and @tbl-results-percep-diff, and @tbl-results-events-w1, @tbl-results-events-w2, and @tbl-results-events-diff.
+**Notes:** Reporting coefficients from underlying regression models reported in @tbl-results-percep-w1, @tbl-results-percep-w2, and @tbl-results-percep-diff (for P3), and @tbl-results-events-w1, @tbl-results-events-w2, and @tbl-results-events-diff (for E4).
 
 Differences in wellbeing by perceived ongoing negative impact of the pandemic, with and without controlling for adverse life events
 
@@ -3974,21 +3954,17 @@ We also explored whether there was evidence that adverse events matter more for 
 
 ## Discussion, conclusions and limitations {#sec-discussion}
 
-This study contributes to existing literature on young people's wellbeing in England in the aftermath of the COVID-19 pandemic by exploring levels of wellbeing at two time points since the pandemic and the factors associated with these levels. We build on existing work showing that the pandemic has had a negative impact on young people's wellbeing [e.g., @Mansfield2022], along with evidence of recovery in wellbeing in the latter phases of the pandemic [@Henseke2022, @Henseke2025], although we emphasise that our findings about the state of post-pandemic inequalities do not imply that these have been caused by the pandemic and its restrictions. We have, however, explored the ongoing role of the pandemic through the importance of young people's own perceptions of its ongoing impact on their wellbeing, as well as the role of adverse life events experienced during the period.
+This study contributes to existing literature on young people's wellbeing in England in the aftermath of the COVID-19 pandemic by exploring levels of wellbeing at two time points since the pandemic and the factors associated with these levels. We build on existing work showing that the pandemic has had a negative impact on young people's wellbeing [e.g., @Mansfield2022], along with evidence of recovery in wellbeing in the latter phases of the pandemic [@Henseke2022; @Henseke2025], although we emphasise that our findings about the state of post-pandemic inequalities do not imply that these have been caused by the pandemic and its restrictions. We have, however, explored the ongoing role of the pandemic through the importance of young people's own perceptions of its ongoing impact on their wellbeing, as well as the role of adverse life events experienced during the period.
 
-Our results contribute to evidence on gender differences in wellbeing [e.g., @Davillas2021a]. Girls and those who identify as non-binary or in another way report lower wellbeing scores (on a scale from 1-10 around 0.5 for girls; around 1.5 for non-binary+ young people) than boys. This persists after adjusting for demographic characteristics, self-reported levels of social support, and experience of adverse life events. These are substantial differences that are relevant to the higher rates of mental health challenges for those in these groups. We also note that the residual differences in wellbeing by gender raise the possibility that these are due to variations by gender in the relative importance of different aspects of the social production function (SPF) itself [@Steverink2020], rather than simply that the inputs of this function differ by gender, although without analysis looking across all proposed dimensions of the SPF this study is not well-placed to provide strong evidence on this point.
+Our results contribute to evidence on gender differences in wellbeing [e.g., @Davillas2021a]. Girls and those who identify as non-binary or in another way report lower wellbeing scores (on a scale from 1-10 around 0.5 for girls; around 1.5 for non-binary+ young people) than boys. This persists after adjusting for demographic characteristics, self-reported levels of social support, and experience of adverse life events. These are substantial differences that are relevant to the higher rates of mental health challenges for those in these groups [@Yoon2023]. These residual differences also raise the possibility of variations by gender in the relative importance of different aspects of the social production function (SPF) itself [@Steverink2020], rather than simply that the function's inputs differ by gender, although, without analysis of all dimensions of the SPF, this study is not well-placed to provide strong evidence on this point.
 
-Our analysis makes innovative use of young people's own perceptions of the ongoing impact of the pandemic on their mental wellbeing in order to validate and quantify these reports. Our findings illustrate the importance of taking such reports seriously: those who indicate an ongoing negative impact in their lives have substantially lower subjective wellbeing scores — more than 1 point on a 1-10 scale — with similar differences across demographic groups. Moreover, these differences are only partially explained by demographic characteristics, social support, or adverse life events experienced during the pandemic, while there is also little evidence of differential response to a perceived negative impact by socioeconomic background or demographic characteristics. This leaves a substantial difference in wellbeing associated with this perception demonstrating that such perceptions are informative in their own right, analogously to how educational expectations [@Anders2017b] and aspirations [@Hart2016] can be informative of young people's educational trajectories over and above other factors. As with that literature, our finding should not be taken to mean such perceptions should be considered causal [@Gorard2012]. While it is probable that there are elements of the SPF that underly these young people's perceptions, we argue that this does not diminish their informational value and, hence, the importance of taking them seriously [@Morgan1998].
+Our analysis makes innovative use of young people's own perceptions of the ongoing impact of the pandemic on their mental wellbeing in order to validate and quantify these reports. Our findings illustrate the importance of taking such reports seriously: those who indicate an ongoing negative impact in their lives have substantially lower subjective wellbeing scores — more than 1 point on a 1-10 scale — with similar differences across demographic groups. Moreover, these differences are only partially explained by demographic characteristics, social support, or adverse life events experienced during the pandemic, while there is also little evidence of differential response to a perceived negative impact by socioeconomic background or demographic characteristics. This leaves a substantial difference in wellbeing associated with this perception demonstrating that such perceptions are informative in their own right, analogously to how educational expectations [@Anders2017b] and aspirations [@Hart2016] can be informative of young people's educational trajectories over and above other factors. As with that literature, our finding should not be taken to mean such perceptions should be considered causal [@Gorard2012]. While it is probable that there are elements of the SPF that underly these young people's perceptions, we argue that this does not diminish their informational value and, hence, the importance of taking them seriously [@Morgan1998]. This implies that, nuancing our previous point, there are limits on the extent to which we can target support based on demographic characteristcs alone. Self-identification is likely necessary to find those most in need of support, albeit with risks since self-reporting behaviour in a survey likely differs from self-reporting for the purposes of intervention. These findings are similar in spirit to those of @Fernandez-Urbano2024, who identify contemporaneous links between how well young people report coping with the pandemic and their subjective wellbeing. We emphasise that the analogy is far from perfect: we are not claiming that a perception of continuing negative impact on wellbeing is the same thing as reporting not coping with the situation, for example. Moreover, unlike @Fernandez-Urbano2024, we do not find evidence of differences in response by young people's socioeconomic status. Nevertheless, these findings align in illustrating the role of such reports in understanding young people's wellbeing.
 
-This implies that, nuancing our previous point, there are limits on the extent to which we can target support based on demographic characteristcs alone. Self-identification is likely necessary to find those most in need of support, albeit with risks since self-reporting behaviour in a survey likely differs from self-reporting for the purposes of intervention. These findings are similar in spirit to those of @Fernandez-Urbano2024, who identify contemporaneous links between how well young people report coping with the pandemic and their subjective wellbeing. We emphasise that the analogy is far from perfect: we are not claiming that a perception of continuing negative impact on wellbeing is the same thing as reporting not coping with the situation, for example. Moreover, unlike @Fernandez-Urbano2024, we do not find evidence of differences in response by young people's socioeconomic status. Nevertheless, these findings align in illustrating the role of such reports in understanding young people's wellbeing.
+Adverse life events experienced during the pandemic are also found to predict lower subjective wellbeing. This is consistent with these undermining aspects of the SPF, such as affection (for events such as arguments within the home) or comfort (in situations of financial distress) [@Chesters2025], along with previous findings that adverse life events are associated with lower wellbeing [@McKnight2002; @Hombrados-Mendieta2019]. However, contrary to our expectations, and others' findings [@Ferreira2021; @Kearns2015; @Aksoy2024], we did not find evidence that social support mediates or buffers the impact of adverse life events in the context of this study. One potential reason for this is that the source of the social support matters: @Lee2016 find that only support from friends (not family or partners) matters in a study of the stress-buffering role of social support for loneliness. We would expect this to be the source of social support most likely to be cut off by COVID-19 restrictions, although we note that this will not be entirely the case due to the compensatory mechanism of increased use of digital contact between friends in the context of the pandemic [@Juvonen2022]. Nevertheless, we contend that this is unlikely entirely successfully to replicate the benefits of in-person contact [@Flannery2021; @Long2022]. More methodologically, with hindsight we note that, while our measures of social support are contemporaneous with our wellbeing measures, they are not contemporaneous with the timing of the adverse events themselves, which may mean they are not providing an accurate depiction of perceived social support during pandemic disruption.
 
-Adverse life events experienced during the pandemic are also found to predict lower subjective wellbeing. This is consistent with these undermining aspects of the SPF, such as affection (for events such as arguments within the home) or comfort (in situations of financial distress) [@Chesters2025], along with previous findings that adverse life events are associated with lower wellbeing [@McKnight2002; @Hombrados-Mendieta2019]. However, contrary to our expectations, and others' findings [@Ferreira2021, @Kearns2015, @Aksoy2024], we did not find evidence that social support mediates or buffers the impact of adverse life events in the context of this study. One potential reason for this is that the source of the social support matters: @Lee2016 find that only support from friends (not family or partners) matters in a study of the stress-buffering role of social support for loneliness. We would expect this to be the source of social support most likely to be cut off by COVID-19 restrictions, although we note that this will not be entirely the case due to the compensatory mechanism of increased use of digital contact between friends in the context of the pandemic [@Juvonen2022]. Nevertheless, we contend that this is unlikely entirely successfully to replicate the benefits of in-person contact [@Flannery2021, @Long2022]. More methodologically, with hindsight we note that, while our measures of social support are contemporaneous with our wellbeing measures, they are not contemporaneous with the timing of the adverse events themselves, which may mean they are not providing an accurate depiction of perceived social support during pandemic disruption.
+This study benefits from a large, representative, longitudinal dataset, with direct reports from both young people and parents to improve the quality of data collected. Nevertheless, we are mindful of the limitations of this study, most particularly that our data lacks pre-pandemic baseline measures of wellbeing, which would substantially increase our ability to understand the longer-term dynamics of the changes (or lack thereof) in wellbeing that we have observed. Furthermore, our data is drawn from a single cohort of young people in England, whose final years in compulsory education were especially disrupted by the impacts of the pandemic, which is important context in any attempt to generalise our findings to other populations. We also note the small sample size of our non-binary+ group, which limits the robustness of findings for this group.
 
-This study benefits from a large, representative, longitudinal dataset, with direct reports from both young people and parents to improve the quality of data collected. Nevertheless, in drawing these conclusions, we are mindful of the limitations of this study, most particularly that our data lacks any pre-pandemic baseline measures of wellbeing, which would substantially increase our ability to understand the longer-term dynamics of the changes (or lack thereof) in wellbeing that we have observed. We should also be aware that our data is drawn from a single cohort of young people in England, whose final years in compulsory education were especially disrupted by the impacts of the pandemic, which is important context in any attempt to generalise our findings to other populations. Furthermore, we note the small sample size of our non-binary+ group, which limits the robustness of findings for this group.
-
-Our findings indicate continuing challenges of inequalities in young people's wellbeing and, hence, the importance of ongoing targeted support to overcome these. We reiterate, however, that we do not link these inequalities particularly with lingering effects of the pandemic since we did not find evidence of differences in the association between perceived continuing impact of the pandemic on wellbeing and young people's socioeconomic or demographic characteristics. In some ways inequalities not linked to the pandemic are of greater concern, given little reason to expect them to subside without intervention. As such, the large differences in wellbeing associated with identifying as non-binary or in another way may suggest a particular need for support among this group, although we reiterate the point made in the previous paragraph about the small sample sizes involved in findings for those identifying as neither male nor female.
-
-The practicalities of providing support at scale are now much harder for our specific cohort, since many of them have now left education entirely. Nevertheless, many of the issues discussed will apply similarly to those still working their way through the education system who could be reached through schools and colleges. As well as the negative implications for the life experiences of these young people, ignoring this issue has potential implications for national economic performance [@Deaton2008a], including via increased risk of mental health challenges [@Lombardo2018].
+Our findings indicate continuing challenges of inequalities in young people's wellbeing and, hence, the importance of ongoing targeted support to overcome these. We reiterate, however, that we do not link these inequalities particularly with lingering effects of the pandemic since we did not find evidence of differences in the association between perceived continuing impact of the pandemic on wellbeing and young people's socioeconomic or demographic characteristics. However, in some ways inequalities not linked to the pandemic are of greater concern, given little reason to expect them to subside without intervention. As such, the large differences in wellbeing associated with identifying as non-binary or in another way may suggest a particular need for support among this group, although we reiterate the small sample sizes involved in findings for those identifying as neither male nor female, making further evidence for this group especially important. The practicalities of providing support at scale are now much harder for our specific cohort, since many have now left education entirely. Nevertheless, the issues discussed will apply similarly to those still working their way through the education system who could be reached through schools and colleges. As well as the negative implications for the life experiences of these young people, ignoring this issue has potential implications for national economic performance [@Deaton2008a], including via increased risk of mental health challenges [@Lombardo2018].
 
 ## References {.unnumbered}
 
@@ -3997,7 +3973,9 @@ The practicalities of providing support at scale are now much harder for our spe
 
 ::: {#appendix-count}
 
-## Appendix: Construction of SES measure {#sec-appendix-ses}
+## Appendix: Construction of measures {#sec-appendix-measures}
+
+### Construction of SES measure {#sec-appendix-measures-ses}
 
 To allow exploration of differences in wellbeing by socioeconomic status (SES) in a simple way, we create a combined index of SES across our measures of parental education, housing tenure and home neighbourhood deprivation. Specifically, given the categorical nature of these variables, we estimate a polychoric correlation matrix of these measures and use principal component analysis [@R-psych] to extract a single component that explains maximum shared variance. Our extracted principal component score explains `{r} round(sespcor$Vaccounted[2,1], digits=2)*100`% of the overall variance of our SES measures. We standardise the measure's distribution to have mean 0 and standard deviation 1 in our analysis sample, plot its distribution in @fig-ses_poly, and use it to split our sample into five quintile groups of equal size (accounting for sample weighting).
 
@@ -4141,6 +4119,58 @@ merged |>
         "**Notes:** Reporting column percentages within each variable. All estimates are weighted for survey design and non-response."
     ))
 ```
+
+### Construction of adverse life events measure {#sec-appendix-measures-adverse-events}
+
+In Wave 1, COSMO asked participants whether they had experienced each of the following life events since the onset of the pandemic in March 2020:
+
+1. A parent/guardian or carer lost their job or business
+2. My family could not afford to buy enough food, or had to use a food bank
+3. My family could not afford to pay their bills/rent/mortgage
+4. I was seriously ill in hospital
+5. A close family member or friend is or was seriously ill in hospital
+6. A close family member or friend died
+7. Increase in number of arguments with parents/guardians
+8. Increase in number of arguments between parents/guardians
+9. Moving to a new home
+10. Parents/guardians separated or divorced
+
+The question is worded to capture events whether or not they are directly attributable to the pandemic, its restrictions and disruptions, but it is reasonable to believe many were caused or exacerbated by the circumstances of the pandemic. Participants were then asked whether they had experienced these events over the past twelve months (i.e., for most participants a year since they responded to the Wave 1 survey) in Wave 2.
+
+`{r} merged |> restrict_sample() |> create_survey_design() |> group_by(event_count_group) |> summarise(p = survey_prop(proportion = TRUE)) |> filter(event_count_group=="0") |> select(p) |> as.numeric() |> round(digits = 2)*100`% of pupils experience no events at all, while `{r} merged |> restrict_sample() |> create_survey_design() |> group_by(event_count_group) |> summarise(p = survey_prop(proportion = TRUE)) |> filter(event_count_group=="3+") |> select(p) |> as.numeric() |> round(digits = 2)*100`% experience three or more events. We report the proportion of young people experiencing each of the ten specific adverse life events in the final column of @tbl-events.
+
+The substantial differences in prevalence of the events means that using a simple count of events experienced would inappropriate impose the same importance, or severity, for all the events. Instead, we allow these to differ, such that lower probability/higher impact events are given more weight by creating a composite index of adverse life events using polychoric principal component analysis (PCA) of the ten adverse life events.
+
+:::{#fig-events-index}
+
+```{r}
+#| label: events-index-dist
+
+events_index_dist
+
+```
+
+**Notes:** Adverse events index based on polychoric principal component analysis of measured adverse life events. The index is standardised to have mean 0 and standard deviation 1 in the analysis sample. Weighted for survey design and non-response.
+
+Distribution of Adverse Events Index, colour-coded by tertile group
+
+:::
+
+The first principal component explains `{r} round(event_pcor_pca$Vaccounted[2,1], digits=2)*100`% of the variance. We standardise this index (mean 0; standard deviation 1) in our analysis sample, plot the distribution in @fig-events-index, and split it into three groups based on the tertiles of the index (accounting for sample weighting). We label these groups as "Fewer Adverse Events Tertile Group", "Average Adverse Events Tertile Group" and "More Adverse Events Tertile Group" to reflect the relative impact of adverse events experienced in each.
+
+```{r}
+#| label: tbl-events
+#| tbl-cap: Adverse life events experienced by Adverse Events Index group
+
+tbl_events_index_events |>
+    as_gt() |>
+    tab_source_note(md(
+        "**Notes:** All estimates are weighted and account for the complex survey design."
+    ))
+
+```
+
+We report the prevalence of each of the adverse life events by the three groups in @tbl-events. This demonstrates that these groups are capturing different levels of exposure to adverse life events, while reflecting the differential prevalence of the events. Students in the "Fewer Adverse Events Tertile Group" are unlikely to have experienced any of the events, with the exception of a close family member dying. In contrast, students in the "More Adverse Events Tertile Group" are likely to have experienced multiple events.
 
 ::: {.landscape}
 
