@@ -1,12 +1,14 @@
 ---
 title: "Young people’s subjective wellbeing in the wake of the COVID-19 pandemic: evidence from a representative cohort study in England"
-date: "2025/08/07"
+date: "2025/09/26"
+description: "Forthcoming in *Social Indicators Research*"
 author:
   - name: Jake Anders
     affiliation: UCL Centre for Education Policy & Equalising Opportunities
     url: https://www.jakeanders.uk
     email: jake@jakeanders.uk
     orcid: 0000-0003-0930-2884
+    corresponding: true
   - name: Erica Holt-White
     affiliation: The Sutton Trust
     email: erica.holtwhite@suttontrust.com
@@ -47,6 +49,10 @@ bibliography:
   - "bibs/R Packages.bib"
 csl: "bibs/apa.csl"
 number-sections: true
+citation:
+    type: article-journal
+    container-title: Social Indicators Research
+    issued: "forthcoming"
 ---
 
 ::: {.no-count}
@@ -3251,16 +3257,14 @@ svyestimations <- list(
     "L6 (+ Social Support)" = ls_w1_m6,
     "L8 (+ Adverse Events)" = ls_w1_m8
 )
-ggcoef_compare(
+w1 <- ggcoef_compare(
     svyestimations,
     intercept = FALSE,
     include = c("gender"),
-    facet_labeller = label_wrap_gen(20)
-) +
-    labs(x = "Differences in wellbeing") +
-    theme(
-        legend.position = "left"
-    )
+    variable_labels = c(gender = "Wave 1"),
+    facet_labeller = label_wrap_gen(20),
+    return_data = TRUE
+)
 
 svyestimations <- list(
     "L1 (Gender)" = ls_w2_m1,
@@ -3268,16 +3272,14 @@ svyestimations <- list(
     "L6 (+ Social Support)" = ls_w2_m6,
     "L8 (+ Adverse Events)" = ls_w2_m8
 )
-ggcoef_compare(
+w2 <- ggcoef_compare(
     svyestimations,
     intercept = FALSE,
     include = c("gender"),
-    facet_labeller = label_wrap_gen(20)
-) +
-    labs(x = "Differences in wellbeing") +
-    theme(
-        legend.position = "left"
-    )
+    variable_labels = c(gender = "Wave 2"),
+    facet_labeller = label_wrap_gen(20),
+    return_data = TRUE
+)
 
 svyestimations <- list(
     "L1 (Gender)" = ls_d_m1,
@@ -3285,11 +3287,21 @@ svyestimations <- list(
     "L6 (+ Social Support)" = ls_d_m6,
     "L8 (+ Adverse Events)" = ls_d_m8
 )
-ggcoef_compare(
+d <- ggcoef_compare(
     svyestimations,
     intercept = FALSE,
     include = c("gender"),
-    facet_labeller = label_wrap_gen(20)
+    variable_labels = c(gender = "Wave 2 adj. Wave 1"),
+    facet_labeller = label_wrap_gen(20),
+    return_data = TRUE
+)
+
+ggcoef_plot(
+    rbind(w1, w2, d),
+    colour = "model",
+    errorbar_coloured = TRUE,
+    dodged = TRUE,
+    facet_labeller = label_wrap_gen(15)
 ) +
     labs(x = "Differences in wellbeing") +
     theme(
@@ -3829,7 +3841,7 @@ reset_gtsummary_theme()
 #|  - "Wave 2 adjusted for Wave 1"
 #| layout-nrow: 3
 
-ggcoef_compare(
+w1 <- ggcoef_compare(
     list(
         "E1 (Adverse Events)" = le_w1_m1,
         "E2 (+ Demographics + SES)" = le_w1_m2,
@@ -3838,13 +3850,11 @@ ggcoef_compare(
     intercept = FALSE,
     add_reference_rows = TRUE,
     include = c(qevent_index_poly),
-    facet_labeller = label_wrap_gen(20)
-) +
-    labs(x = "Differences in wellbeing") +
-    theme(
-        legend.position = "left"
-    )
-ggcoef_compare(
+    variable_labels = c(qevent_index_poly = "Wave 1"),
+    facet_labeller = label_wrap_gen(20),
+    return_data = TRUE
+)
+w2 <- ggcoef_compare(
     list(
         "E1 (Adverse Events)" = le_w2_m1,
         "E2 (+ Demographics + SES)" = le_w2_m2,
@@ -3853,13 +3863,11 @@ ggcoef_compare(
     intercept = FALSE,
     add_reference_rows = TRUE,
     include = c(qevent_index_poly),
-    facet_labeller = label_wrap_gen(20)
-) +
-    labs(x = "Differences in wellbeing") +
-    theme(
-        legend.position = "left"
-    )
-ggcoef_compare(
+    variable_labels = c(qevent_index_poly = "Wave 2"),
+    facet_labeller = label_wrap_gen(20),
+    return_data = TRUE
+)
+d <- ggcoef_compare(
     list(
         "E1 (Adverse Events)" = le_d_m1,
         "E2 (+ Demographics + SES)" = le_d_m2,
@@ -3868,7 +3876,17 @@ ggcoef_compare(
     intercept = FALSE,
     add_reference_rows = TRUE,
     include = c(qevent_index_poly),
-    facet_labeller = label_wrap_gen(20)
+    variable_labels = c(qevent_index_poly = "Wave 2 adj. Wave 1"),
+    facet_labeller = label_wrap_gen(20),
+    return_data = TRUE
+)
+
+ggcoef_plot(
+    rbind(w1, w2, d),
+    colour = "model",
+    errorbar_coloured = TRUE,
+    dodged = TRUE,
+    facet_labeller = label_wrap_gen(15)
 ) +
     labs(x = "Differences in wellbeing") +
     theme(
@@ -4464,7 +4482,7 @@ prediction_data <- merged |>
 plot_predictions(
     lp_w1_m4,
     by = c("gender", "covid_impact_mh_neg"),
-    wts = prediction_data$probs
+    wts = prediction_data$prob
 ) +
     labs(
         x = "Gender",
@@ -4475,7 +4493,7 @@ plot_predictions(
 plot_predictions(
     lp_w2_m4,
     by = c("gender", "covid_impact_mh_neg"),
-    wts = prediction_data$probs
+    wts = prediction_data$prob
 ) +
     labs(
         x = "Gender",
@@ -4486,7 +4504,7 @@ plot_predictions(
 plot_predictions(
     lp_d_m4,
     by = c("gender", "covid_impact_mh_neg"),
-    wts = prediction_data$probs
+    wts = prediction_data$prob
 ) +
     labs(
         x = "Gender",
@@ -4530,7 +4548,7 @@ prediction_data <- merged |>
 plot_predictions(
     lp_w1_m4,
     by = c("sps_total", "covid_impact_mh_neg"),
-    wts = prediction_data$probs
+    wts = prediction_data$prob
 ) +
     guides(fill = "none") +
     labs(
@@ -4542,7 +4560,7 @@ plot_predictions(
 plot_predictions(
     lp_w2_m4,
     by = c("sps_total", "covid_impact_mh_neg"),
-    wts = prediction_data$probs
+    wts = prediction_data$prob
 ) +
     guides(fill = "none") +
     labs(
@@ -4554,7 +4572,7 @@ plot_predictions(
 plot_predictions(
     lp_d_m4,
     by = c("sps_total", "covid_impact_mh_neg"),
-    wts = prediction_data$probs
+    wts = prediction_data$prob
 ) +
     guides(fill = "none") +
     labs(
